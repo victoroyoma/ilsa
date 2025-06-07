@@ -2,6 +2,7 @@ import React, { useEffect, useRef, lazy } from 'react';
 import { Button } from '../components/Button';
 import { CountdownTimer } from '../components/CountdownTimer';
 import { MapPinIcon, CalendarIcon } from 'lucide-react';
+import { PartnerCarousel } from '../components/PartnerCarousel';
 export const Home: React.FC = () => {
   const taglineRef = useRef<HTMLDivElement>(null);
   const phaseRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -146,6 +147,21 @@ export const Home: React.FC = () => {
                 10 minutes from King Shaka International Airport
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+      {/* Partners & Sponsors Section */}
+      <section className="py-20 bg-black/30 backdrop-blur-sm">
+        <div className="container mx-auto px-4 md:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">
+            Our <span className="text-amber-400">Partners</span>
+          </h2>
+          <PartnerCarousel />
+          <div className="mt-8 text-center">
+            <p className="text-white/60 text-sm">
+              Interested in becoming a partner? Contact us at
+              partnerships@taffds.org
+            </p>
           </div>
         </div>
       </section>

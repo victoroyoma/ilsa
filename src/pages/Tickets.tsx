@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '../components/Button';
 import { CheckIcon, AlertCircleIcon } from 'lucide-react';
+import { PaymentModal } from '../components/PaymentModal';
 interface TicketTierProps {
   name: string;
   price: string;
   features: string[];
   highlight?: boolean;
   availableUntil?: string;
+  onPurchase: () => void;
 }
 const TicketTier: React.FC<TicketTierProps> = ({
   name,
   price,
   features,
   highlight = false,
-  availableUntil
+  availableUntil,
+  onPurchase
 }) => {
   return <div className={`relative rounded-xl overflow-hidden transition-transform duration-300 hover:scale-105 ${highlight ? 'bg-gradient-to-b from-amber-500/20 to-black/60 border-2 border-amber-500/50' : 'bg-gradient-to-b from-blue-900/20 to-black/40 border border-white/10'}`}>
       {highlight && <div className="absolute top-0 right-0 bg-amber-500 text-black text-xs font-bold py-1 px-3 rounded-bl">
@@ -34,13 +37,23 @@ const TicketTier: React.FC<TicketTierProps> = ({
               <span className="text-white/80 text-sm">{feature}</span>
             </li>)}
         </ul>
-        <Button variant={highlight ? 'primary' : 'secondary'} className="w-full">
+        <Button variant={highlight ? 'primary' : 'secondary'} className="w-full" onClick={onPurchase}>
           Purchase Ticket
         </Button>
       </div>
     </div>;
 };
 export const Tickets: React.FC = () => {
+  const [selectedTicket, setSelectedTicket] = useState<{
+    type: string;
+    price: string;
+  } | null>(null);
+  const handlePurchase = (type: string, price: string) => {
+    setSelectedTicket({
+      type,
+      price
+    });
+  };
   return <div className="w-full min-h-screen pt-24">
       <div className="container mx-auto px-4 md:px-8 py-12">
         <div className="max-w-4xl mx-auto text-center mb-16">
@@ -62,10 +75,12 @@ export const Tickets: React.FC = () => {
         </div>
         {/* Ticket tiers */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <TicketTier name="Early Bird" price="499" availableUntil="March 31, 2025" features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'Networking opportunities', 'Certificate of attendance']} />
-          <TicketTier name="Standard" price="699" highlight={true} features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'Networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner']} />
-          <TicketTier name="Premium" price="999" features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'VIP networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner', 'Private meeting with speakers', 'Priority seating', 'Exclusive workshop participation']} />
+          <TicketTier name="Early Bird" price="499" availableUntil="March 31, 2025" features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'Networking opportunities', 'Certificate of attendance']} onPurchase={() => handlePurchase('Early Bird', '499')} />
+          <TicketTier name="Standard" price="699" highlight={true} features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'Networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner']} onPurchase={() => handlePurchase('Standard', '699')} />
+          <TicketTier name="Premium" price="999" features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'VIP networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner', 'Private meeting with speakers', 'Priority seating', 'Exclusive workshop participation']} onPurchase={() => handlePurchase('Premium', '999')} />
         </div>
+        {/* Payment Modal */}
+        <PaymentModal isOpen={selectedTicket !== null} onClose={() => setSelectedTicket(null)} ticketType={selectedTicket?.type || ''} price={selectedTicket?.price || ''} />
         {/* Visa application section */}
         <div className="max-w-4xl mx-auto bg-gradient-to-b from-blue-900/20 to-black/40 backdrop-blur-sm rounded-xl p-8 border border-white/10 mb-16">
           <div className="flex flex-col md:flex-row items-start gap-6">

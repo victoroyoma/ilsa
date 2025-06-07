@@ -23,6 +23,10 @@ export const Navbar: React.FC<NavbarProps> = ({
     path: '/',
     id: 'home'
   }, {
+    name: 'About',
+    path: '/about',
+    id: 'about'
+  }, {
     name: 'Speakers',
     path: '/speakers',
     id: 'speakers'
