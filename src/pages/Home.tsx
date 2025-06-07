@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, lazy } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from '../components/Button';
 import { CountdownTimer } from '../components/CountdownTimer';
 import { MapPinIcon, CalendarIcon } from 'lucide-react';

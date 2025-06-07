@@ -41,7 +41,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
   ticketType,
   price
 }) => {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOption] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const handlePayment = async (optionId: string) => {
     setIsProcessing(true);
