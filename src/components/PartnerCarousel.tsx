@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from 'react';
 const partners = [{
-  name: 'BioTech Africa',
-  logo: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=100&fit=crop&crop=center&q=80'
+
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749333022/photo_2023-06-28_22-10-35_jo7cs7.jpg'
 }, {
-  name: 'Health Innovation Lab',
-  logo: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=200&h=100&fit=crop&crop=center&q=80'
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332830/photo_2023-07-10_19-26-33_mh9kch.jpg'
 }, {
-  name: 'African Research Council',
-  logo: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200&h=100&fit=crop&crop=center&q=80'
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332826/photo_2023-07-10_19-26-29_fz1ff0.jpg'
 }, {
-  name: 'Global Longevity Institute',
-  logo: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=200&h=100&fit=crop&crop=center&q=80'
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332765/lifespan_pjmym3.jpg'
 }, {
-  name: 'Future Health Foundation',
-  logo: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200&h=100&fit=crop&crop=center&q=80'
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332759/lev0_cglhw5.jpg'
 }, {
-  name: 'Tech Innovations SA',
-  logo: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=200&h=100&fit=crop&crop=center&q=80'
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332744/unnamed-removebg-preview_xdprtx.png'
+},
+{
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332739/photo_2023-07-10_19-26-25_idvz61.jpg'
+}, {
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332726/download-removebg-preview_qtnfgk.png'
+}, {
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332676/download__4_-removebg-preview-1_q375tj.png'
+}, {
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332661/14452-removebg-preview_ttt5pw.png'
+}, {
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332627/Claretian-Website-logo-Fav_v5yppi.png'
+}, {
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332621/College_of_Medicine_Unilag_Logo-1_ij4xfg.png'
+}, {
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332617/logo-gcls-1_mla9fh.png'
 }];
 export const PartnerCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,10 +46,10 @@ export const PartnerCarousel: React.FC = () => {
           minWidth: 'calc(100% / 3)'
         }}>
               <div className="bg-black/30 rounded-lg p-4 h-32 flex items-center justify-center group hover:bg-black/40 transition-all duration-300">
-                <img src={partner.logo} alt={partner.name} className="max-h-20 max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+                <img src={partner.logo} className="max-h-20 max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <p className="text-center text-white/60 text-sm mt-2">
-                {partner.name}
+                Partner {index + 1}
               </p>
             </div>)}
         </div>
