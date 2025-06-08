@@ -19,8 +19,12 @@ export const SpeakerCard: React.FC<SpeakerProps> = ({
         {/* Front of card */}
         <div className="absolute inset-0 backface-hidden bg-gradient-to-b from-blue-900/40 to-black/60 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 shadow-xl">
           <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 via-transparent to-blue-500/10"></div>
-          <div className="h-1/2 overflow-hidden">
-            <img src={imageUrl} alt={name} className="w-full h-full object-cover object-center" />
+          <div className="h-1/2 overflow-hidden mt-4 mx-4">
+            <img 
+              src={imageUrl} 
+              alt={name} 
+              className="w-full h-full object-cover object-center rounded-lg border border-white/20" 
+            />
           </div>
           <div className="p-6 flex flex-col justify-between h-1/2">
             <div>

@@ -162,7 +162,7 @@ export const Home: React.FC = () => {
           <div className="mt-8 text-center">
             <p className="text-white/60 text-sm">
               Interested in becoming a partner? Contact us at
-              partnerships@taffds.org
+              afrolongevity@taffds.org
             </p>
           </div>
         </div>
