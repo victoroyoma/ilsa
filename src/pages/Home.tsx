@@ -3,6 +3,7 @@ import { Button } from '../components/Button';
 import { CountdownTimer } from '../components/CountdownTimer';
 import { MapPinIcon, CalendarIcon } from 'lucide-react';
 import { PartnerCarousel } from '../components/PartnerCarousel';
+
 export const Home: React.FC = () => {
   const taglineRef = useRef<HTMLDivElement>(null);
   const phaseRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -48,6 +49,7 @@ export const Home: React.FC = () => {
       });
     };
   }, []);
+
   return <div className="w-full min-h-screen pt-24">
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 px-4 overflow-hidden">

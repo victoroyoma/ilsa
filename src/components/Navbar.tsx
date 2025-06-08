@@ -4,10 +4,12 @@ import { MenuIcon, XIcon } from 'lucide-react';
 interface NavbarProps {
   activePage: string;
   setActivePage: (page: string) => void;
+  logoUrl?: string;
 }
 export const Navbar: React.FC<NavbarProps> = ({
   activePage,
-  setActivePage
+  setActivePage,
+  logoUrl
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -38,9 +40,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   return <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md py-3' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
         <Link to="/" onClick={() => setActivePage('home')} className="flex items-center space-x-2">
-          <div className="text-amber-500 font-bold text-xl md:text-2xl tracking-tight">
+          {logoUrl ? <img src={logoUrl} alt="ILSA 2025" className="h-8 md:h-10 w-auto"/> : <div className="text-amber-500 font-bold text-xl md:text-2xl tracking-tight">
             ILSA<span className="text-white">2025</span>
-          </div>
+          </div>}
         </Link>
         {/* Desktop navigation */}
         <div className="hidden md:flex items-center space-x-8">
@@ -51,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
         {/* Mobile menu button */}
         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden text-white">
-          {isMobileMenuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
+          {isMobileMenuOpen ? <XIcon size={24}/> : <MenuIcon size={24}/>}
         </button>
       </div>
       {/* Mobile menu */}

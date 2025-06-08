@@ -6,37 +6,37 @@ const speakersData = [{
   title: 'PhD, Chief Science Officer',
   organization: 'African Longevity Institute',
   bio: 'Dr. Dlamini is a pioneering researcher in stem cell therapies with over 15 years of experience in regenerative medicine. Her groundbreaking work on telomere extension in African populations has been published in leading scientific journals and has opened new avenues for longevity research.',
-  imageUrl: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+  imageUrl: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1/ilsa/speakers/nkosazana-dlamini'
 }, {
   name: 'Prof. Thabo Mbeki',
   title: 'MD, PhD, Research Director',
   organization: 'Global Health Innovations',
   bio: 'Professor Mbeki has dedicated his career to studying the genetic factors that contribute to longevity in diverse African populations. His research team has identified several novel biomarkers that may predict healthy aging outcomes across different ethnic groups.',
-  imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+  imageUrl: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1/ilsa/speakers/thabo-mbeki'
 }, {
   name: 'Dr. Amara Okafor',
   title: 'PhD, Bioinformatics Specialist',
   organization: 'Tech4Longevity',
   bio: 'Dr. Okafor combines computational biology with artificial intelligence to develop predictive models for age-related diseases. Her work has led to the development of several AI-driven diagnostic tools that are currently being implemented in healthcare systems across Africa.',
-  imageUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+  imageUrl: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1/ilsa/speakers/amara-okafor'
 }, {
   name: 'Prof. Kwame Nkrumah',
   title: 'MD, Gerontology Expert',
   organization: 'Pan-African Medical Research',
   bio: "Professor Nkrumah's research focuses on the social determinants of health span in African communities. His longitudinal studies on centenarians in rural villages have provided valuable insights into lifestyle factors that contribute to exceptional longevity.",
-  imageUrl: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+  imageUrl: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1/ilsa/speakers/kwame-nkrumah'
 }, {
   name: 'Dr. Fatima Al-Maktoum',
   title: 'PhD, Epigenetics Researcher',
   organization: 'International Aging Research',
   bio: 'Dr. Al-Maktoum is at the forefront of epigenetic research, studying how environmental factors influence gene expression and aging processes. Her team has developed novel interventions that target epigenetic modifications to potentially reverse aspects of cellular aging.',
-  imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+  imageUrl: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1/ilsa/speakers/fatima-al-maktoum'
 }, {
   name: 'Dr. Samuel Osei',
   title: 'PhD, Nutritional Biochemist',
   organization: 'Dietary Science Foundation',
   bio: "Dr. Osei's research examines the biochemical pathways through which traditional African diets may contribute to longevity. His work has identified several compounds in indigenous foods that appear to activate longevity-associated genes and cellular pathways.",
-  imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+  imageUrl: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1/ilsa/speakers/samuel-osei'
 }];
 export const Speakers: React.FC = () => {
   const [visibleSpeakers, setVisibleSpeakers] = useState<typeof speakersData>([]);

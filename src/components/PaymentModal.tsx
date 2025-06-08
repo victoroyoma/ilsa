@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X as XIcon, Loader2Icon } from 'lucide-react';
+
 interface PaymentOption {
   id: string;
   name: string;
@@ -17,22 +18,22 @@ const paymentOptions: PaymentOption[] = [{
   id: 'paypal',
   name: 'PayPal',
   description: 'Fast and secure payment with PayPal',
-  icon: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg'
+  icon: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749331711/01-paypal-secure-payment_spxxbp.png'
 }, {
   id: 'crypto',
   name: 'Cryptocurrency',
   description: 'Pay with Bitcoin, Ethereum, or USDT',
-  icon: 'https://cryptologos.cc/logos/bitcoin-btc-logo.svg'
+  icon: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1/ilsa/payment/crypto-logo'
 }, {
   id: 'wire',
   name: 'Wire Transfer',
   description: 'Traditional bank transfer (2-3 business days)',
-  icon: 'https://cdn-icons-png.flaticon.com/512/2830/2830289.png'
+  icon: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1/ilsa/payment/wire-transfer-logo'
 }, {
   id: 'flutterwave',
   name: 'Flutterwave',
   description: 'Local payments for African countries',
-  icon: 'https://cdn.iconscout.com/icon/free/png-256/free-flutterwave-3628026-3030159.png',
+  icon: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1/ilsa/payment/flutterwave-logo',
   regions: ['Nigeria', 'Kenya', 'South Africa', 'Ghana']
 }];
 export const PaymentModal: React.FC<PaymentModalProps> = ({
