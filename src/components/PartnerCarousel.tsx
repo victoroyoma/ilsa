@@ -48,9 +48,9 @@ export const PartnerCarousel: React.FC = () => {
               <div className="bg-black/30 rounded-lg p-4 h-32 flex items-center justify-center group hover:bg-black/40 transition-all duration-300">
                 <img src={partner.logo} className="max-h-20 max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              <p className="text-center text-white/60 text-sm mt-2">
-                Partner {index + 1}
-              </p>
+                {/* <p className="text-center text-white/60 text-sm mt-2">
+                  Partner {index + 1}
+                </p> */}
             </div>)}
         </div>
       </div>
