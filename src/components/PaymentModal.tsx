@@ -18,22 +18,22 @@ const paymentOptions: PaymentOption[] = [{
   id: 'paypal',
   name: 'PayPal',
   description: 'Fast and secure payment with PayPal',
-  icon: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749331711/01-paypal-secure-payment_spxxbp.png'
+  icon: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749333059/PAYPAL_m9w2zr.png'
 }, {
   id: 'crypto',
   name: 'Cryptocurrency',
   description: 'Pay with Bitcoin, Ethereum, or USDT',
-  icon: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1/ilsa/payment/crypto-logo'
+  icon: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749364701/crypto_ugk4vh.jpg'
 }, {
   id: 'wire',
   name: 'Wire Transfer',
   description: 'Traditional bank transfer (2-3 business days)',
-  icon: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1/ilsa/payment/wire-transfer-logo'
+  icon: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749364701/crypto_ugk4vh.jpg'
 }, {
-  id: 'flutterwave',
-  name: 'Flutterwave',
+  id: 'Paystack',
+  name: 'Paystack',
   description: 'Local payments for African countries',
-  icon: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1/ilsa/payment/flutterwave-logo',
+  icon: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749333066/paystack-banner_sjm3az.jpg',
   regions: ['Nigeria', 'Kenya', 'South Africa', 'Ghana']
 }];
 export const PaymentModal: React.FC<PaymentModalProps> = ({
