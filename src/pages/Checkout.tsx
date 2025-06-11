@@ -86,7 +86,7 @@ export const Checkout: React.FC = () => {
       const message = encodeURIComponent(
         `Hello, I'd like to submit my payment proof for ILSA 2025.\n` +
         `Ticket Type: ${ticketType}\n` +
-        `Amount: $${price} USD\n` +
+        `Amount: R${price} ZAR\n` +
         `Payment Method: ${method}\n\n` +
         `I have uploaded my proof of payment and will share it in this chat.`
       );

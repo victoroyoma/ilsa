@@ -53,7 +53,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
               <p className="text-white/60 mb-2">Selected Ticket</p>
               <p className="text-white font-bold">{ticketType}</p>
               <p className="text-amber-400 text-xl font-bold mt-2">
-                ${price} USD
+                R{price} ZAR
               </p>
             </div>
             <div className="grid gap-4">
