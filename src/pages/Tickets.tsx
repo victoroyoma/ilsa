@@ -85,7 +85,7 @@ export const Tickets: React.FC = () => {
         <TicketTier 
           name="Student Delegate" 
           price="1,000" 
-          highlight={true} 
+      
           // features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'Networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner']} 
           onPurchase={() => handlePurchase('Student Delegate', '1000')} 
         />
@@ -98,6 +98,7 @@ export const Tickets: React.FC = () => {
         <TicketTier 
           name="Full Conference + MasterClass Combo" 
           price="5,500" 
+          highlight={true}
           // features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'VIP networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner', 'Private meeting with speakers', 'Priority seating', 'Exclusive workshop participation']} 
           onPurchase={() => handlePurchase('Full Conference + MasterClass Combo', '5500')} 
         />
