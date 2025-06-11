@@ -15,7 +15,7 @@ export const SpeakerCard: React.FC<SpeakerProps> = ({
   linkedInUrl,
   imageUrl
 }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [] = useState(false);
 
   return (
     <div className="h-[400px] w-full perspective-1000 cursor-pointer group">

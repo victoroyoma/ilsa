@@ -31,7 +31,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
   price
 }) => {
   const navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [] = useState<string | null>(null);
   const handlePayment = (optionId: string) => {
     navigate(`/checkout/${optionId}/${ticketType}/${price}`);
   };

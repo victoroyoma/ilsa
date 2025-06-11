@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '../components/Button';
-import { CheckIcon, AlertCircleIcon } from 'lucide-react';
+import {  AlertCircleIcon } from 'lucide-react';
 import { PaymentModal } from '../components/PaymentModal';
 interface TicketTierProps {
   name: string;
