@@ -12,8 +12,8 @@ interface PaymentDetails {
     accountName: string;
     accountNumber: string;
     bankName: string;
-    swiftCode: string;
-    bankAddress: string;
+    // swiftCode: string;
+    // bankAddress: string;
     instructions: string[];
   };
 }
@@ -28,7 +28,7 @@ export const Checkout: React.FC = () => {
 
   const paymentDetails: PaymentDetails = {
     paypal: {
-      email: 'afrolongevity@taffds.org',
+      email: 'taffdsIncPay@gmail.com',
       instructions: [
         'Send the payment to the PayPal email address above',
         'Include your full name and ticket type in the payment note',
@@ -37,11 +37,11 @@ export const Checkout: React.FC = () => {
       ]
     },
     paystack: {
-      accountName: 'TAFFD\'s Afrolongevity',
-      accountNumber: 'TAGGED78901',
-      bankName: 'First Bank of Nigeria',
-      swiftCode: 'FBNINGLA',
-      bankAddress: '35 Marina, Lagos Island, Lagos, Nigeria',
+      accountName: 'TAFFD\'s',
+      accountNumber: '63111409496',
+      bankName: 'First National Bank',
+    //   swiftCode: 'FBNINGLA',
+    //   bankAddress: '35 Marina, Lagos Island, Lagos, Nigeria',
       instructions: [
         'Use the bank details provided above for your transfer',
         'Include your full name and ticket type as payment reference',
