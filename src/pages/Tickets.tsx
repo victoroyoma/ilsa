@@ -5,7 +5,7 @@ import { PaymentModal } from '../components/PaymentModal';
 interface TicketTierProps {
   name: string;
   price: string;
-  features: string[];
+  // features: string[];
   highlight?: boolean;
   availableUntil?: string;
   onPurchase: () => void;
@@ -13,7 +13,7 @@ interface TicketTierProps {
 const TicketTier: React.FC<TicketTierProps> = ({
   name,
   price,
-  features,
+  // features,
   highlight = false,
   availableUntil,
   onPurchase
@@ -29,14 +29,14 @@ const TicketTier: React.FC<TicketTierProps> = ({
       </p>}
       <div className="mb-6">
         <span className="text-3xl font-bold text-white">{price}</span>
-        <span className="text-white/60 ml-1">USD</span>
+        <span className="text-white/60 ml-1">ZAR</span>
       </div>
-      <ul className="space-y-3 mb-8">
+      {/* <ul className="space-y-3 mb-8">
         {features.map((feature, index) => <li key={index} className="flex items-start">
           <CheckIcon className="w-5 h-5 text-amber-400 mr-3 mt-0.5 flex-shrink-0" />
           <span className="text-white/80 text-sm">{feature}</span>
         </li>)}
-      </ul>
+      </ul> */}
       <Button variant={highlight ? 'primary' : 'secondary'} className="w-full" onClick={onPurchase}>
         Purchase Ticket
       </Button>
@@ -75,9 +75,38 @@ export const Tickets: React.FC = () => {
       </div>
       {/* Ticket tiers */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        <TicketTier name="Early Bird" price="499" availableUntil="March 31, 2025" features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'Networking opportunities', 'Certificate of attendance']} onPurchase={() => handlePurchase('Early Bird', '499')} />
-        <TicketTier name="Standard" price="699" highlight={true} features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'Networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner']} onPurchase={() => handlePurchase('Standard', '699')} />
-        <TicketTier name="Premium" price="999" features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'VIP networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner', 'Private meeting with speakers', 'Priority seating', 'Exclusive workshop participation']} onPurchase={() => handlePurchase('Premium', '999')} />
+        <TicketTier 
+          name="Standard Delegate" 
+          price="3,500" 
+          // availableUntil="March 31, 2025" 
+          // features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'Networking opportunities', 'Certificate of attendance']} 
+          onPurchase={() => handlePurchase('Standard Delegate', '3500')} 
+        />
+        <TicketTier 
+          name="Student Delegate" 
+          price="1,000" 
+          highlight={true} 
+          // features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'Networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner']} 
+          onPurchase={() => handlePurchase('Student Delegate', '1000')} 
+        />
+        <TicketTier 
+          name="MasterClass Only (No Conference Access)" 
+          price="2,000" 
+          // features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'VIP networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner', 'Private meeting with speakers', 'Priority seating', 'Exclusive workshop participation']} 
+          onPurchase={() => handlePurchase('MasterClass Only', '2000')} 
+        />
+        <TicketTier 
+          name="Full Conference + MasterClass Combo" 
+          price="5,500" 
+          // features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'VIP networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner', 'Private meeting with speakers', 'Priority seating', 'Exclusive workshop participation']} 
+          onPurchase={() => handlePurchase('Full Conference + MasterClass Combo', '5500')} 
+        />
+        <TicketTier 
+          name="VIP Delegate ( Premium Access & Exclusive Lounges)" 
+          price="13,000" 
+          // features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'VIP networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner', 'Private meeting with speakers', 'Priority seating', 'Exclusive workshop participation']} 
+          onPurchase={() => handlePurchase('VIP Delegate', '13000')} 
+        />
       </div>
       {/* Payment Modal */}
       <PaymentModal isOpen={selectedTicket !== null} onClose={() => setSelectedTicket(null)} ticketType={selectedTicket?.type || ''} price={selectedTicket?.price || ''} />
