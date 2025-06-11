@@ -135,7 +135,7 @@ export const Checkout: React.FC = () => {
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-white/60">Amount</span>
-                <span className="text-amber-400 font-bold">${price} USD</span>
+                <span className="text-amber-400 font-bold">R{price} ZAR</span>
               </div>
             </div>
 
