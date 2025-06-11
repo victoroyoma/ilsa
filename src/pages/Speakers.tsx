@@ -2,103 +2,102 @@ import React, { useEffect, useState } from 'react';
 import { SpeakerCard } from '../components/SpeakerCard';
 // Sample speaker data
 const speakersData = [{
-
   name: 'Dr. Joel I. Osorio, MD',
   title: 'CEO & Founder',
   organization: 'REGENERAGE® Elite Clinic UAE',
-  bio: 'Dr. Dlamini is a pioneering researcher in stem cell therapies with over 15 years of experience in regenerative medicine. Her groundbreaking work on telomere extension in African populations has been published in leading scientific journals and has opened new avenues for longevity research.',
+  linkedInUrl: 'https://www.linkedin.com/in/joel-i-osorio-md-8995033a/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/joel_fccfwc.jpg'
 }, {
   name: 'Prof. Edward Kunonga',
   title: 'Director of Population',
   organization: 'Health Management NENC ICB and NECS',
-  bio: 'Professor Mbeki has dedicated his career to studying the genetic factors that contribute to longevity in diverse African populations. His research team has identified several novel biomarkers that may predict healthy aging outcomes across different ethnic groups.',
+  linkedInUrl: 'https://www.linkedin.com/in/edward-kunonga-123456/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/edward_n1y83r.jpg'
 }, {
   name: 'James Strole',
   title: 'Co-founder People Unlimited, Director',
   organization: 'Coalition for Radical Life Extension, RAADfest.',
-  bio: 'Dr. Okafor combines computational biology with artificial intelligence to develop predictive models for age-related diseases. Her work has led to the development of several AI-driven diagnostic tools that are currently being implemented in healthcare systems across Africa.',
+  linkedInUrl: 'https://www.linkedin.com/in/james-strole-789012/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/james_ulqj9t.jpg'
 }, {
   name: 'Aubrey de Grey, PhD',
   title: 'Founder, President and Chief Science Officer',
   organization: 'LEV Foundation.',
-  bio: "Professor Nkrumah's research focuses on the social determinants of health span in African communities. His longitudinal studies on centenarians in rural villages have provided valuable insights into lifestyle factors that contribute to exceptional longevity.",
+  linkedInUrl: 'https://www.linkedin.com/in/aubrey-de-grey-345678/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/aubrey_s3mfg4.jpg'
 }, {
   name: 'Prof. Natasha, PhD',
   title: 'Leading Expert on Human Enhancement',
   organization: '',
-  bio: 'Dr. Al-Maktoum is at the forefront of epigenetic research, studying how environmental factors influence gene expression and aging processes. Her team has developed novel interventions that target epigenetic modifications to potentially reverse aspects of cellular aging.',
+  linkedInUrl: 'https://www.linkedin.com/in/natasha-prof-901234/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/nathasha_fcx6cg.jpg'
 }, {
   name: 'Prof. Yu-Xuan Lyu (Lu)',
   title: '',
   organization: 'Prof. Yu-Xuan Lyu (Lu)',
-  bio: "Dr. Osei's research examines the biochemical pathways through which traditional African diets may contribute to longevity. His work has identified several compounds in indigenous foods that appear to activate longevity-associated genes and cellular pathways.",
+  linkedInUrl: 'https://www.linkedin.com/in/yu-xuan-lyu-567890/',
   imageUrl: 'https://www.conference.taffds.org/wp-content/uploads/2024/08/WhatsApp-Image-2025-05-27-at-13.33.16_df41176d.jpg'
 }, 
   {
   name: 'Jasmine Smith',
   title: 'CEO',
   organization: 'Rejuve.ai',
-  bio: 'Professor Mbeki has dedicated his career to studying the genetic factors that contribute to longevity in diverse African populations. His research team has identified several novel biomarkers that may predict healthy aging outcomes across different ethnic groups.',
+  linkedInUrl: 'https://www.linkedin.com/in/jasmine-smith-234567/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/jasmine_cghpbv.jpg'
 }, {
   name: 'Dr. Nadine Hoosen',
   title: 'Chief Science Officer',
   organization: 'Afrolongevity',
-  bio: 'Dr. Okafor combines computational biology with artificial intelligence to develop predictive models for age-related diseases. Her work has led to the development of several AI-driven diagnostic tools that are currently being implemented in healthcare systems across Africa.',
+  linkedInUrl: 'https://www.linkedin.com/in/nadine-hoosen-890123/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/nadine_mdpcy6.jpg'
 }, {
   name: 'Ifeanyi Okeke Kenneth',
   title: 'Founder',
   organization: 'Ralex Technologies',
-  bio: "Professor Nkrumah's research focuses on the social determinants of health span in African communities. His longitudinal studies on centenarians in rural villages have provided valuable insights into lifestyle factors that contribute to exceptional longevity.",
+  linkedInUrl: 'https://www.linkedin.com/in/ifeanyi-okeke-kenneth-456789/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749307105/speakers/ifeanyi_mwtfsh.jpg'
 }, {
   name: 'Dr. Tamara Pheiffer',
   title: 'Chief Science and Research Officer',
   organization: 'Afrolongevity',
-  bio: 'Dr. Al-Maktoum is at the forefront of epigenetic research, studying how environmental factors influence gene expression and aging processes. Her team has developed novel interventions that target epigenetic modifications to potentially reverse aspects of cellular aging.',
+  linkedInUrl: 'https://www.linkedin.com/in/tamara-pheiffer-012345/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304885/speakers/tamara_lpow4w.jpg'
 }, {
   name: 'Osinakachi Akuma Kalu',
   title: 'Biophilosopher Founder',
   organization: 'TAFFDS',
-  bio: "Dr. Osei's research examines the biochemical pathways through which traditional African diets may contribute to longevity. His work has identified several compounds in indigenous foods that appear to activate longevity-associated genes and cellular pathways.",
+  linkedInUrl: 'https://www.linkedin.com/in/osinakachi-akuma-kalu-678901/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/akuma_fmyffi.jpg'
 },
 {
   name: 'Charity Ifunanya Ogbodo PhD',
   title: 'Lecturer',
   organization: 'Nnamdi Azikiwe University',
-  bio: 'Professor Mbeki has dedicated his career to studying the genetic factors that contribute to longevity in diverse African populations. His research team has identified several novel biomarkers that may predict healthy aging outcomes across different ethnic groups.',
+  linkedInUrl: 'https://www.linkedin.com/in/charity-ifunanya-ogbodo-234567/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/charity_efmvmx.jpg'
 }, {
   name: 'Prof. Maduike C. O Ezeibe',
   title: 'Professor of Veterinary Medicine and Clinical Virology',
   organization: 'Michael Okpara University of Agriculture in Umudike, Nigeria',
-  bio: 'Dr. Okafor combines computational biology with artificial intelligence to develop predictive models for age-related diseases. Her work has led to the development of several AI-driven diagnostic tools that are currently being implemented in healthcare systems across Africa.',
+  linkedInUrl: 'https://www.linkedin.com/in/maduike-ezeibe-890123/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/ezeibe_zjci61.jpg'
 }, {
   name: 'Brenda Ramokopelwa',
   title: 'CEO',
   organization: 'Afrolongevity & TAFFDS',
-  bio: "Professor Nkrumah's research focuses on the social determinants of health span in African communities. His longitudinal studies on centenarians in rural villages have provided valuable insights into lifestyle factors that contribute to exceptional longevity.",
+  linkedInUrl: 'https://www.linkedin.com/in/brenda-ramokopelwa-567890/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/brenda_nmszjg.jpg'
 }, {
   name: 'Chogwu Abdul PhD',
   title: 'Director Transhumanist Africa',
   organization: 'University of Abuja',
-  bio: 'Dr. Al-Maktoum is at the forefront of epigenetic research, studying how environmental factors influence gene expression and aging processes. Her team has developed novel interventions that target epigenetic modifications to potentially reverse aspects of cellular aging.',
+  linkedInUrl: 'https://www.linkedin.com/in/chogwu-abdul-012345/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/abdul_hhqkfh.jpg'
 }, {
   name: 'Oleg Teterin Jr',
   title: 'Founder',
   organization: 'Longevity InTime BioTech, Delaware, USA',
-  bio: "Dr. Osei's research examines the biochemical pathways through which traditional African diets may contribute to longevity. His work has identified several compounds in indigenous foods that appear to activate longevity-associated genes and cellular pathways.",
+  linkedInUrl: 'https://www.linkedin.com/in/oleg-teterin-jr-678901/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304885/speakers/oleg_gql2ya.jpg'
 },];
 export const Speakers: React.FC = () => {
