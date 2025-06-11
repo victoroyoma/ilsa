@@ -5,99 +5,98 @@ const speakersData = [{
   name: 'Dr. Joel I. Osorio, MD',
   title: 'CEO & Founder',
   organization: 'REGENERAGE® Elite Clinic UAE',
-  linkedInUrl: 'https://www.linkedin.com/in/joel-i-osorio-md-8995033a/',
+  linkedInUrl: 'https://www.linkedin.com/in/dr-joel-i-osorio-md-ms-abaarm-faarm-fscm-b0145113/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/joel_fccfwc.jpg'
 }, {
   name: 'Prof. Edward Kunonga',
   title: 'Director of Population',
   organization: 'Health Management NENC ICB and NECS',
-  linkedInUrl: 'https://www.linkedin.com/in/edward-kunonga-123456/',
+  linkedInUrl: 'https://www.linkedin.com/in/prof-edward-kunonga-53111819/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/edward_n1y83r.jpg'
 }, {
   name: 'James Strole',
   title: 'Co-founder People Unlimited, Director',
   organization: 'Coalition for Radical Life Extension, RAADfest.',
-  linkedInUrl: 'https://www.linkedin.com/in/james-strole-789012/',
+  linkedInUrl: 'https://www.linkedin.com/in/james-strole-a746a55/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/james_ulqj9t.jpg'
 }, {
   name: 'Aubrey de Grey, PhD',
   title: 'Founder, President and Chief Science Officer',
   organization: 'LEV Foundation.',
-  linkedInUrl: 'https://www.linkedin.com/in/aubrey-de-grey-345678/',
+  linkedInUrl: 'https://www.linkedin.com/in/aubrey-de-grey-24260b/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/aubrey_s3mfg4.jpg'
 }, {
   name: 'Prof. Natasha, PhD',
   title: 'Leading Expert on Human Enhancement',
   organization: '',
-  linkedInUrl: 'https://www.linkedin.com/in/natasha-prof-901234/',
+  linkedInUrl: 'https://www.linkedin.com/in/natasha-vita-more-phd-mphil-msc-1st-380363/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/nathasha_fcx6cg.jpg'
 }, {
   name: 'Prof. Yu-Xuan Lyu (Lu)',
   title: '',
-  organization: 'Prof. Yu-Xuan Lyu (Lu)',
-  linkedInUrl: 'https://www.linkedin.com/in/yu-xuan-lyu-567890/',
+  organization: '',
+  linkedInUrl: 'https://www.linkedin.com/in/yuxuanlu/',
   imageUrl: 'https://www.conference.taffds.org/wp-content/uploads/2024/08/WhatsApp-Image-2025-05-27-at-13.33.16_df41176d.jpg'
-}, 
-  {
+}, {
   name: 'Jasmine Smith',
   title: 'CEO',
   organization: 'Rejuve.ai',
-  linkedInUrl: 'https://www.linkedin.com/in/jasmine-smith-234567/',
+  linkedInUrl: 'https://www.linkedin.com/in/singularityzollie/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/jasmine_cghpbv.jpg'
 }, {
   name: 'Dr. Nadine Hoosen',
   title: 'Chief Science Officer',
   organization: 'Afrolongevity',
-  linkedInUrl: 'https://www.linkedin.com/in/nadine-hoosen-890123/',
+  linkedInUrl: 'https://www.linkedin.com/in/nadine-hoosen-precision-medicine/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/nadine_mdpcy6.jpg'
 }, {
   name: 'Ifeanyi Okeke Kenneth',
   title: 'Founder',
   organization: 'Ralex Technologies',
-  linkedInUrl: 'https://www.linkedin.com/in/ifeanyi-okeke-kenneth-456789/',
+  linkedInUrl: 'https://www.linkedin.com/in/%C3%ADf%C3%A9%C3%A1ny%C3%AD-%C3%B2k%C3%A9k%C3%A9-b1b899192/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749307105/speakers/ifeanyi_mwtfsh.jpg'
 }, {
   name: 'Dr. Tamara Pheiffer',
   title: 'Chief Science and Research Officer',
   organization: 'Afrolongevity',
-  linkedInUrl: 'https://www.linkedin.com/in/tamara-pheiffer-012345/',
+  linkedInUrl: 'https://www.linkedin.com/in/dr-tamara-pheiffer-53ab17119/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304885/speakers/tamara_lpow4w.jpg'
 }, {
   name: 'Osinakachi Akuma Kalu',
   title: 'Biophilosopher Founder',
   organization: 'TAFFDS',
-  linkedInUrl: 'https://www.linkedin.com/in/osinakachi-akuma-kalu-678901/',
+  linkedInUrl: 'https://www.linkedin.com/in/osinakachi-akuma-kalu/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/akuma_fmyffi.jpg'
 },
 {
   name: 'Charity Ifunanya Ogbodo PhD',
   title: 'Lecturer',
   organization: 'Nnamdi Azikiwe University',
-  linkedInUrl: 'https://www.linkedin.com/in/charity-ifunanya-ogbodo-234567/',
+  linkedInUrl: 'https://www.linkedin.com/in/charity-ifunanya-ogbodo-phd-138b9b338/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/charity_efmvmx.jpg'
 }, {
   name: 'Prof. Maduike C. O Ezeibe',
   title: 'Professor of Veterinary Medicine and Clinical Virology',
   organization: 'Michael Okpara University of Agriculture in Umudike, Nigeria',
-  linkedInUrl: 'https://www.linkedin.com/in/maduike-ezeibe-890123/',
+  linkedInUrl: 'https://cvm.mouau.edu.ng/personnel/maduike-chiehiura-onwubikoeziebe/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/ezeibe_zjci61.jpg'
 }, {
   name: 'Brenda Ramokopelwa',
   title: 'CEO',
   organization: 'Afrolongevity & TAFFDS',
-  linkedInUrl: 'https://www.linkedin.com/in/brenda-ramokopelwa-567890/',
+  linkedInUrl: 'https://www.linkedin.com/in/brendaramokopelwa/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/brenda_nmszjg.jpg'
 }, {
   name: 'Chogwu Abdul PhD',
   title: 'Director Transhumanist Africa',
   organization: 'University of Abuja',
-  linkedInUrl: 'https://www.linkedin.com/in/chogwu-abdul-012345/',
+  linkedInUrl: 'https://www.linkedin.com/in/chogwu-abdul-012450b2/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/abdul_hhqkfh.jpg'
 }, {
   name: 'Oleg Teterin Jr',
   title: 'Founder',
   organization: 'Longevity InTime BioTech, Delaware, USA',
-  linkedInUrl: 'https://www.linkedin.com/in/oleg-teterin-jr-678901/',
+  linkedInUrl: 'https://www.linkedin.com/in/teterinoleg/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304885/speakers/oleg_gql2ya.jpg'
 },];
 export const Speakers: React.FC = () => {
