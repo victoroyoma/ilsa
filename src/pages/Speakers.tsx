@@ -163,7 +163,7 @@ const handleDownload = () => {
     className="bg-gradient-to-r from-amber-500 to-amber-600 text-black px-6 py-3 rounded-md font-medium hover:from-amber-400 hover:to-amber-500 transition-all duration-300"
     onClick={handleDownload}
   >
-    Request Abstract Form
+    See Guidelines and Download Abstract Template
   </button>
 </div>
         </div>
