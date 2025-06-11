@@ -91,7 +91,7 @@ export const Checkout: React.FC = () => {
         `I have uploaded my proof of payment and will share it in this chat.`
       );
       
-      const whatsappUrl = `https://wa.me/+2348084190845?text=${message}`;
+      const whatsappUrl = `https://wa.me/27636568545?text=${message}`;
       window.open(whatsappUrl, '_blank');
       
       // Navigate back to tickets page
