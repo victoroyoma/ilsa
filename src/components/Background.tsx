@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-// Cloudinary images for ILSA 2025 (replace public_ids with your actual images)
+// Cloudinary images for ILSA 2025 
 const images = [
   'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332680/IMG_7604-scaled_idxrlg.jpg',
   'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332685/IMG_7992-scaled_ovyl6b.jpg',
@@ -49,7 +49,7 @@ export const Background: React.FC = () => {
         aria-hidden="true"
       ></div>
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/90 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/70 md:from-black/80 md:to-black/90 z-10"></div>
       {/* Holographic gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/20 via-purple-800/10 to-amber-700/20 z-20"></div>
       {/* Background particle effect */}
