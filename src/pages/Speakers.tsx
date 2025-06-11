@@ -6,7 +6,7 @@ const speakersData = [{
   title: 'CEO & Founder',
   organization: 'REGENERAGE® Elite Clinic UAE',
   linkedInUrl: 'https://www.linkedin.com/in/dr-joel-i-osorio-md-ms-abaarm-faarm-fscm-b0145113/',
-  imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/joel_fccfwc.jpg'
+  imageUrl: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/joel_im6wxn.jpg'
 }, {
   name: 'Prof. Edward Kunonga',
   title: 'Director of Population',
@@ -24,7 +24,7 @@ const speakersData = [{
   title: 'Founder, President and Chief Science Officer',
   organization: 'LEV Foundation.',
   linkedInUrl: 'https://www.linkedin.com/in/aubrey-de-grey-24260b/',
-  imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/aubrey_s3mfg4.jpg'
+  imageUrl: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/aubrey_qrdyyz.png'
 }, {
   name: 'Prof. Natasha, PhD',
   title: 'Leading Expert on Human Enhancement',
@@ -36,7 +36,7 @@ const speakersData = [{
   title: '',
   organization: '',
   linkedInUrl: 'https://www.linkedin.com/in/yuxuanlu/',
-  imageUrl: 'https://www.conference.taffds.org/wp-content/uploads/2024/08/WhatsApp-Image-2025-05-27-at-13.33.16_df41176d.jpg'
+  imageUrl: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/Yu-Xuan_Lyu_yquxvs.jpg'
 }, {
   name: 'Jasmine Smith',
   title: 'CEO',
@@ -54,13 +54,13 @@ const speakersData = [{
   title: 'Founder',
   organization: 'Ralex Technologies',
   linkedInUrl: 'https://www.linkedin.com/in/%C3%ADf%C3%A9%C3%A1ny%C3%AD-%C3%B2k%C3%A9k%C3%A9-b1b899192/',
-  imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749307105/speakers/ifeanyi_mwtfsh.jpg'
+  imageUrl: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/leader_cixj1q.png'
 }, {
   name: 'Dr. Tamara Pheiffer',
   title: 'Chief Science and Research Officer',
   organization: 'Afrolongevity',
   linkedInUrl: 'https://www.linkedin.com/in/dr-tamara-pheiffer-53ab17119/',
-  imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304885/speakers/tamara_lpow4w.jpg'
+  imageUrl: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/tamara_dznztt.jpg'
 }, {
   name: 'Osinakachi Akuma Kalu',
   title: 'Biophilosopher Founder',
@@ -76,8 +76,8 @@ const speakersData = [{
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/charity_efmvmx.jpg'
 }, {
   name: 'Prof. Maduike C. O Ezeibe',
-  title: 'Professor of Veterinary Medicine and Clinical Virology',
-  organization: 'Michael Okpara University of Agriculture in Umudike, Nigeria',
+  title: 'Professor of Veterinary Medicine & Clinical Virology',
+  organization: 'Michael Okpara University of Agriculture Umudike, Nigeria',
   linkedInUrl: 'https://cvm.mouau.edu.ng/personnel/maduike-chiehiura-onwubikoeziebe/',
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304884/speakers/ezeibe_zjci61.jpg'
 }, {
@@ -85,7 +85,7 @@ const speakersData = [{
   title: 'CEO',
   organization: 'Afrolongevity & TAFFDS',
   linkedInUrl: 'https://www.linkedin.com/in/brendaramokopelwa/',
-  imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304883/speakers/brenda_nmszjg.jpg'
+  imageUrl: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/brenda_jhmi7m.png'
 }, {
   name: 'Chogwu Abdul PhD',
   title: 'Director Transhumanist Africa',
