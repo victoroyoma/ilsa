@@ -100,9 +100,8 @@ const speakersData = [{
   imageUrl: 'https://res.cloudinary.com/ddkndbz6g/image/upload/v1749304885/speakers/oleg_gql2ya.jpg'
 },];
 export const Speakers: React.FC = () => {
-  8
-const handleDownload = () => {
-  const pdfUrl = "https://drive.google.com/file/d/1awdNrheBcPeR2hDFxZerrieBjIDqJJcf/view?usp=sharing"; 
+  const handleDownload = () => {
+  const pdfUrl = "https://drive.google.com/file/d/1awdNrheBcPeR2hDFxZerrieBjIDqJJcf/view?usp=sharing";
   const link = document.createElement("a");
   link.href = pdfUrl;
   link.download = "ILSA_2025_CFA1.pdf";

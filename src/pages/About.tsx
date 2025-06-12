@@ -15,7 +15,7 @@ export const About: React.FC = () => {
             <p className="text-white/70 text-lg leading-relaxed">
               While the world debates the future of health, Africa is engineering it—on its own terms.
               ILSA is the only summit where the old and the new collide to forge radical protocols,
-              business models, and diplomatic tools to bridge Africa's longevity divides.
+              business models, and diplomatic tools to bridge the longevity divide and build true global collaboration for the benefit of humanity.
             </p>
           </div>
         </div>
@@ -24,7 +24,7 @@ export const About: React.FC = () => {
         <div className="max-w-4xl mx-auto mb-20 bg-gradient-to-b from-amber-500/20 to-black/40 backdrop-blur-sm rounded-xl p-8 border border-amber-500/30">
           <p className="text-xl md:text-2xl text-white/90 font-semibold italic text-center">
             "ILSA 2025 is not a meeting of minds. It is a gathering of disruptors.
-            A rebellion against premature death. A rewriting of the rules of life."
+            A rebellion against premature death"
           </p>
         </div>
 

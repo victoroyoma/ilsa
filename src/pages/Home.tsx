@@ -9,7 +9,7 @@ export const Home: React.FC = () => {
   const phaseRefs = useRef<(HTMLDivElement | null)[]>([]);
   useEffect(() => {
     // Typewriter effect for tagline
-    const tagline = 'Africa is not asking to be in the frame, we are becoming the frame';
+    const tagline = '“Africa is fast becoming the leader in shaping the frame of longevity science and driving the solutions that will leap frog its progress , be part of the conversation !';
     const taglineElement = taglineRef.current;
     if (taglineElement) {
       taglineElement.textContent = '';
@@ -76,12 +76,11 @@ export const Home: React.FC = () => {
             <div ref={taglineRef} className="text-xl md:text-2xl font-semibold text-white/90 mb-10 h-20 md:h-16 flex items-center justify-center"></div>
             <p className="text-white/70 mb-10 max-w-2xl mx-auto">
               Join us for an in-person summit focused on real-time collaboration
-              and innovation in longevity science. No hybrid option
-              available—experience the transformation in person.
+              and innovation in longevity science.
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
               <Button variant="primary" to="/tickets">
-                General Registration
+                Registration
               </Button>
               <Button variant="secondary" to="/speakers">
                 Call for Abstract
@@ -109,7 +108,7 @@ export const Home: React.FC = () => {
             icon: '🧠'
           }, {
             title: 'Keynote Addresses',
-            description: 'Inspire and direct the future of African leadership in global longevity research and innovation.',
+            description: 'Inspire and guide  the Future of leadership in  the global longevity research and innovation',
             icon: '🌟'
           }, {
             title: 'Innovation & Research Showcases',
@@ -146,7 +145,12 @@ export const Home: React.FC = () => {
               <p className="text-white/70">
                 Durban, KwaZulu-Natal, South Africa
                 <br />
-                10 minutes from King Shaka International Airport
+                10 minutes from King Shaka International Airport. <br /> 
+                <b>Discounted Shuttle service available at the airport for registered delegates</b>
+              </p>
+              <p className="text-white/70 mt-4">
+                Paid registered attendees get a discount for their stay in that week <br />
+                ( you need a registration number to qualify for discount )
               </p>
             </div>
           </div>
@@ -156,12 +160,12 @@ export const Home: React.FC = () => {
       <section className="py-20 bg-black/30 backdrop-blur-sm">
         <div className="container mx-auto px-4 md:px-8">
           <h2 className="text-3xl font-bold text-center mb-12 text-white">
-            Our <span className="text-amber-400">Partners</span>
+            Our <span className="text-amber-400">Previous Partners</span>
           </h2>
           <PartnerCarousel />
           <div className="mt-8 text-center">
             <p className="text-white/60 text-sm">
-              Interested in becoming a partner? Contact us at
+              Interested in becoming an ILSA2025 partner? Contact us at
               afrolongevity@taffds.org
             </p>
           </div>
