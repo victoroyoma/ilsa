@@ -104,7 +104,7 @@ export const Registration: React.FC = () => {
                 <label className="block text-white mb-2" htmlFor="country">
                   Country *
                 </label>
-                <select id="country" name="country" value={formData.country} onChange={handleChange} className="w-full bg-black/5 border border-white/10 rounded-lg px-4 py-3 text-black focus:outline-none focus:border-amber-500" required>
+                <select id="country" name="country" value={formData.country} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-black focus:outline-none focus:border-amber-500" required>
                   <option value="">Select your country</option>
                   <option value="ZA">South Africa</option>
                   <option value="NG">Nigeria</option>
