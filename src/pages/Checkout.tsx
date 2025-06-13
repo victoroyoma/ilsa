@@ -18,7 +18,6 @@ interface PaymentDetails {
   };
 }
 
-
 export const Checkout: React.FC = () => {
   const { method, ticketType, price } = useParams();
   const navigate = useNavigate();
@@ -40,8 +39,8 @@ export const Checkout: React.FC = () => {
       accountName: 'TAFFD\'s',
       accountNumber: '63111409496',
       bankName: 'First National Bank',
-    //   swiftCode: 'FBNINGLA',
-    //   bankAddress: '35 Marina, Lagos Island, Lagos, Nigeria',
+      //   swiftCode: 'FBNINGLA',
+      //   bankAddress: '35 Marina, Lagos Island, Lagos, Nigeria',
       instructions: [
         'Use the bank details provided above for your transfer',
         'Include your full name and ticket type as payment reference',
@@ -82,22 +81,32 @@ export const Checkout: React.FC = () => {
 
     setIsSubmitting(true);
     try {
-      // WhatsApp redirect with payment details
+      // Create formData for file upload if needed later
+      const formData = new FormData();
+      formData.append('proof', proofFile);
+      formData.append('ticketType', ticketType || '');
+      formData.append('price', price || '');
+      formData.append('method', method || '');
+
+      // WhatsApp message with better formatting
       const message = encodeURIComponent(
-        `Hello, I'd like to submit my payment proof for ILSA 2025.\n` +
+        `*ILSA 2025 Payment Submission*\n\n` +
         `Ticket Type: ${ticketType}\n` +
         `Amount: R${price} ZAR\n` +
         `Payment Method: ${method}\n\n` +
-        `I have uploaded my proof of payment and will share it in this chat.`
+        `I will share my proof of payment in this chat.`
       );
-      
+
       const whatsappUrl = `https://wa.me/27636568545?text=${message}`;
       window.open(whatsappUrl, '_blank');
-      
-      // Navigate back to tickets page
-      navigate('/tickets');
+
+      // Navigate back after short delay
+      setTimeout(() => {
+        navigate('/tickets', { replace: true });
+      }, 1000);
     } catch (error) {
-      alert('Failed to process. Please try again.');
+      alert('Failed to process payment submission. Please contact support.');
+      console.error('Submission error:', error);
     } finally {
       setIsSubmitting(false);
     }
@@ -115,8 +124,8 @@ export const Checkout: React.FC = () => {
   return (
     <div className="w-full min-h-screen pt-24">
       <div className="container mx-auto px-4 md:px-8 py-12">
-        <button 
-          onClick={() => navigate('/tickets')} 
+        <button
+          onClick={() => navigate('/tickets')}
           className="flex items-center text-white/60 hover:text-white mb-8 transition-colors"
           disabled={isSubmitting}
         >
@@ -149,7 +158,7 @@ export const Checkout: React.FC = () => {
                 {method === 'paypal' ? (
                   <div className="flex justify-between items-center">
                     <span className="text-white/60">PayPal Email</span>
-                    <button 
+                    <button
                       onClick={() => copyToClipboard((details as PaymentDetails['paypal']).email)}
                       className="flex items-center text-amber-400 hover:text-amber-300"
                     >
@@ -164,7 +173,7 @@ export const Checkout: React.FC = () => {
                         return (
                           <div key={key} className="flex justify-between items-center">
                             <span className="text-white/60">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
-                            <button 
+                            <button
                               onClick={() => copyToClipboard(value)}
                               className="flex items-center text-amber-400 hover:text-amber-300"
                             >
@@ -202,8 +211,8 @@ export const Checkout: React.FC = () => {
                   id="proof-upload"
                   disabled={isSubmitting}
                 />
-                <label 
-                  htmlFor="proof-upload" 
+                <label
+                  htmlFor="proof-upload"
                   className={`cursor-pointer text-white/60 hover:text-white block ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   {proofFile ? (
@@ -217,21 +226,21 @@ export const Checkout: React.FC = () => {
                 </label>
               </div>
 
-<Button
-              variant="primary"
-              className="w-full"
-              onClick={handleSubmission}
-              disabled={!proofFile || isSubmitting}
-            >
-              {isSubmitting ? (
-                <div className="flex items-center">
-                  <Loader2Icon className="animate-spin mr-2" />
-                  Processing...
-                </div>
-              ) : (
-                'Submit Payment Proof'
-              )}
-            </Button>
+              <Button
+                variant="primary"
+                className="w-full"
+                onClick={handleSubmission}
+                disabled={!proofFile || isSubmitting}
+              >
+                {isSubmitting ? (
+                  <div className="flex items-center">
+                    <Loader2Icon className="animate-spin mr-2" />
+                    Processing...
+                  </div>
+                ) : (
+                  'Submit Payment Proof'
+                )}
+              </Button>
             </div>
           </div>
         </div>

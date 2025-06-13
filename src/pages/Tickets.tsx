@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Button } from '../components/Button';
-import {  AlertCircleIcon } from 'lucide-react';
+import {  AlertCircleIcon, CheckIcon } from 'lucide-react';
 import { PaymentModal } from '../components/PaymentModal';
+
 interface TicketTierProps {
   name: string;
   price: string;
-  // features: string[];
+  features: string[];
   highlight?: boolean;
   availableUntil?: string;
   onPurchase: () => void;
@@ -13,7 +14,7 @@ interface TicketTierProps {
 const TicketTier: React.FC<TicketTierProps> = ({
   name,
   price,
-  // features,
+  features,
   highlight = false,
   availableUntil,
   onPurchase
@@ -31,14 +32,14 @@ const TicketTier: React.FC<TicketTierProps> = ({
         <span className="text-3xl font-bold text-white">{price}</span>
         <span className="text-white/60 ml-1">ZAR</span>
       </div>
-      {/* <ul className="space-y-3 mb-8">
+      <ul className="space-y-3 mb-8">
         {features.map((feature, index) => <li key={index} className="flex items-start">
           <CheckIcon className="w-5 h-5 text-amber-400 mr-3 mt-0.5 flex-shrink-0" />
           <span className="text-white/80 text-sm">{feature}</span>
         </li>)}
-      </ul> */}
+      </ul>
       <Button variant={highlight ? 'primary' : 'secondary'} className="w-full" onClick={onPurchase}>
-        Purchase Ticket
+        Secure Your Place
       </Button>
     </div>
   </div>;
@@ -77,36 +78,35 @@ export const Tickets: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
         <TicketTier 
           name="Standard Delegate" 
-          price="3,500" 
+          price="3,500 ( VAT exclusive)" 
           // availableUntil="March 31, 2025" 
-          // features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'Networking opportunities', 'Certificate of attendance']} 
-          onPurchase={() => handlePurchase('Standard Delegate', '3500')} 
+          features={['Full summit access (2 days)', 'Conference Meals', 'Conference Bag', ' Discounted Airport Transfer ' ]} 
+          onPurchase={() => handlePurchase('Standard Delegate', '3500 ( VAT exclusive)')} 
         />
         <TicketTier 
           name="Student Delegate" 
-          price="1,000" 
-      
-          // features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'Networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner']} 
-          onPurchase={() => handlePurchase('Student Delegate', '1000')} 
+          price="1,000 ( VAT exclusive)" 
+          features={['Full summit access (2 days)', 'Conference Meals ( verifiable student number required)', 'Current institute of learnings will be verified', ]} 
+          onPurchase={() => handlePurchase('Student Delegate', '1000 ( VAT exclusive)')} 
         />
         <TicketTier 
           name="MasterClass Only (No Conference Access)" 
-          price="2,000" 
-          // features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'VIP networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner', 'Private meeting with speakers', 'Priority seating', 'Exclusive workshop participation']} 
-          onPurchase={() => handlePurchase('MasterClass Only', '2000')} 
+          price="2,000 ( VAT exclusive)" 
+          features={['Access to Innovation Showcases', 'MasterClass materials and resources']} 
+          onPurchase={() => handlePurchase('MasterClass Only', '2000 ( VAT exclusive)')} 
         />
         <TicketTier 
           name="Full Conference + MasterClass Combo" 
-          price="5,500" 
+          price="5,500 (R500 Discount) ( VAT exclusive)" 
           highlight={true}
-          // features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'VIP networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner', 'Private meeting with speakers', 'Priority seating', 'Exclusive workshop participation']} 
-          onPurchase={() => handlePurchase('Full Conference + MasterClass Combo', '5500')} 
+          features={['Full summit access (2 days)', 'Conference Meals', 'Conference Bag',]} 
+          onPurchase={() => handlePurchase('Full Conference + MasterClass Combo', '5500 ( VAT exclusive)')} 
         />
         <TicketTier 
-          name="VIP Delegate ( Premium Access & Exclusive Lounges)" 
-          price="13,000" 
-          // features={['Full summit access (2 days)', 'Access to all keynote addresses', 'Access to Innovation Showcases', 'Summit materials and resources', 'VIP networking opportunities', 'Certificate of attendance', 'Access to recorded sessions', 'Exclusive networking dinner', 'Private meeting with speakers', 'Priority seating', 'Exclusive workshop participation']} 
-          onPurchase={() => handlePurchase('VIP Delegate', '13000')} 
+          name="VIP Delegate ( Premium Access)" 
+          price="13,000 ( VAT exclusive)" 
+          features={['Full summit access (2 days)', ' 2 Nights at Sibaya Lodge', 'VIP transfer from Airport', 'Premium seating at the event', 'VIP networking opportunities', 'Exclusive access to VIP lounge', 'Priority access to all sessions',]} 
+          onPurchase={() => handlePurchase('VIP Delegate', '13000 ( VAT exclusive)')} 
         />
       </div>
       {/* Payment Modal */}
@@ -126,8 +126,7 @@ export const Tickets: React.FC = () => {
             <div className="flex items-start mb-6">
               <AlertCircleIcon className="w-5 h-5 text-amber-400 mr-3 mt-0.5 flex-shrink-0" />
               <span className="text-white/80 text-sm">
-                Request visa application support documents at least 3 months
-                before the summit to allow for processing time.
+                Request visa application support documents  as soon as you have registered  to avoid delays - inquire with SA embassy in your country or visit their website for entry requirements.
               </span>
             </div>
           </div>

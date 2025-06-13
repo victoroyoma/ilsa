@@ -154,6 +154,66 @@ export const Home: React.FC = () => {
               </p>
             </div>
           </div>
+          <div className="bg-gradient-to-b from-blue-900/20 to-black/40 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10">
+              <img src="https://res.cloudinary.com/dmqjqn6x3/image/upload/real_hotel_mo2vrv.png" alt="Sun Sibaya Hotel" className="w-full aspect-video object-cover" />
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-2">
+                  Luxury Accommodation
+                </h3>
+                <p className="text-white/70">
+                  Experience world-class hospitality with stunning ocean views
+                  and modern amenities at the prestigious Sun Sibaya Hotel.
+                </p>
+              </div>
+            </div>
+        </div>
+      </section>
+            {/* Post Event Tours Section */}
+      <section className="py-16 bg-black/30 backdrop-blur-sm">
+        <div className="container mx-auto px-4 md:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">
+            Post Event <span className="text-amber-400">Tours</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[{
+            title: 'Hluhluwe–Imfolozi Safari',
+            image: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?auto=format&fit=crop&w=800&q=80',
+            description: "Experience Africa's oldest game reserve, home to the Big Five and successful rhino conservation programs.",
+            duration: '2 Days'
+          }, {
+            title: 'Drakensberg Mountains',
+            image: 'https://images.unsplash.com/photo-1577948000111-9c970dfe3680?auto=format&fit=crop&w=800&q=80',
+            description: 'Explore UNESCO World Heritage sites featuring ancient rock art and breathtaking mountain landscapes.',
+            duration: '3 Days'
+          }, {
+            title: 'Durban Cultural Tour',
+            image: 'https://images.unsplash.com/photo-1578914134488-d16435b259cc?auto=format&fit=crop&w=800&q=80',
+            description: 'Discover rich Zulu heritage, Indian influences, and colonial history in vibrant markets and museums.',
+            duration: '1 Day'
+          }].map((tour, index) => <div key={index} className="bg-gradient-to-b from-blue-900/20 to-black/40 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 group hover:border-amber-500/30 transition-all duration-300">
+                <div className="relative">
+                  <img src={tour.image} alt={tour.title} className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <div className="absolute top-4 right-4 bg-amber-500 text-black px-3 py-1 rounded-full text-sm font-semibold">
+                    {tour.duration}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    {tour.title}
+                  </h3>
+                  <p className="text-white/70 mb-4">{tour.description}</p>
+                  <button className="text-amber-400 hover:text-amber-300 font-semibold transition-colors duration-300">
+                    Learn More →
+                  </button>
+                </div>
+              </div>)}
+          </div>
+          <div className="text-center mt-8">
+            <p className="text-white/60">
+              Custom tours and extended packages available upon request. Contact
+              our travel desk for more information.
+            </p>
+          </div>
         </div>
       </section>
       {/* Partners & Sponsors Section */}

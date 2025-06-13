@@ -27,7 +27,10 @@ const partners = [{
   logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332621/College_of_Medicine_Unilag_Logo-1_ij4xfg.png'
 }, {
   logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332617/logo-gcls-1_mla9fh.png'
-}];
+},
+{
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/WhatsApp_Image_2025-06-13_at_8.20.03_AM_jafuvy.jpg'
+},];
 export const PartnerCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
