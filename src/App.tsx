@@ -4,13 +4,13 @@ import { Home } from './pages/Home'
 import { Speakers } from './pages/Speakers'
 import { Tickets } from './pages/Tickets'
 import { About } from './pages/About'
-import { Logistics } from './pages/Logistics';
+// import { Logistics } from './pages/Logistics';
 import { Background } from './components/Background'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 import { Checkout } from './pages/Checkout';
 import { Registration } from './pages/Registration';
-import { PaymentModalPage } from './components/PaymentModalPage';
+// import { PaymentModalPage } from './components/PaymentModalPage';
 export function App() {
   const [activePage, setActivePage] = useState('home')
   const logoUrl = "https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749328853/ILSA-NEW-LOGO-W_cuh2vh.png"
@@ -29,10 +29,8 @@ export function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/speakers" element={<Speakers />} />
-              <Route path="/logistics" element={<Logistics />} />
               <Route path="/tickets" element={<Tickets />} />
               <Route path="/registration/:ticketType/:price" element={<Registration />} />
-              <Route path="/payment/:ticketType/:price" element={<PaymentModalPage />} />
               <Route path="/checkout/:method/:ticketType/:price" element={<Checkout />} />
             </Routes>
           </main>
@@ -42,3 +40,4 @@ export function App() {
     </Router>
   )
 }
+

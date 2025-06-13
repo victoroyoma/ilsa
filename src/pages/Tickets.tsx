@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '../components/Button';
 import {  AlertCircleIcon, CheckIcon } from 'lucide-react';
 import { PaymentModal } from '../components/PaymentModal';
+import { useNavigate } from 'react-router-dom';
 
 interface TicketTierProps {
   name: string;
@@ -49,11 +50,10 @@ export const Tickets: React.FC = () => {
     type: string;
     price: string;
   } | null>(null);
+  const navigate = useNavigate();
   const handlePurchase = (type: string, price: string) => {
-    setSelectedTicket({
-      type,
-      price
-    });
+    // Navigate to registration form with ticket details
+    navigate(`/registration/${encodeURIComponent(type)}/${encodeURIComponent(price)}`);
   };
   return <div className="w-full min-h-screen pt-24">
     <div className="container mx-auto px-4 md:px-8 py-12">
