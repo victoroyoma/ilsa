@@ -13,7 +13,8 @@ import { Registration } from './pages/Registration';
 // import { PaymentModalPage } from './components/PaymentModalPage';
 export function App() {
   const [activePage, setActivePage] = useState('home')
-  const logoUrl = "https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749328853/ILSA-NEW-LOGO-W_cuh2vh.png"
+  const logoUrl = "https://res.cloudinary.com/dmqjqn6x3/image/upload/ILSA-NEW-LOGO-W_cuh2vh.png"
+  
   return (
     <Router>
       <div className="relative w-full min-h-screen font-sans text-white overflow-hidden">

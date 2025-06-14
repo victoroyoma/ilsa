@@ -14,15 +14,15 @@ interface PaymentModalProps {
   price: string;
 }
 const paymentOptions: PaymentOption[] = [{
-  id: 'paypal',
-  name: 'PayPal',
-  description: 'International payments via PayPal',
-  icon: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg'
-}, {
   id: 'paystack',
-  name: 'Paystack',
-  description: 'Local African payments via Paystack',
+  name: 'Card Payment / Bank Transfer',
+  description: 'Pay securely with Paystack',
   icon: 'https://website-v3-assets.s3.amazonaws.com/assets/img/hero/Paystack-mark-white-twitter.png'
+}, {
+  id: 'bank',
+  name: 'Manual Bank Transfer',
+  description: 'Direct bank transfer to our account',
+  icon: 'path_to_bank_icon'
 }];
 export const PaymentModal: React.FC<PaymentModalProps> = ({
   isOpen,
@@ -33,7 +33,11 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
   const navigate = useNavigate();
   const [] = useState<string | null>(null);
   const handlePayment = (optionId: string) => {
-    navigate(`/checkout/${optionId}/${ticketType}/${price}`);
+    if (optionId === 'paystack') {
+      navigate(`/registration/${ticketType}/${price}?method=paystack`);
+    } else {
+      navigate(`/registration/${ticketType}/${price}?method=bank`);
+    }
   };
   if (!isOpen) return null;
   return <div className="fixed inset-0 z-50 flex items-center justify-center p-4">

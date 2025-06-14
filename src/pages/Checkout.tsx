@@ -4,16 +4,10 @@ import { Button } from '../components/Button';
 import { ClipboardIcon, CheckIcon, ArrowLeftIcon, Loader2Icon } from 'lucide-react';
 
 interface PaymentDetails {
-  paypal: {
-    email: string;
-    instructions: string[];
-  };
-  paystack: {
+  bank: {
     accountName: string;
     accountNumber: string;
     bankName: string;
-    // swiftCode: string;
-    // bankAddress: string;
     instructions: string[];
   };
 }
@@ -26,21 +20,10 @@ export const Checkout: React.FC = () => {
   const [proofFile, setProofFile] = useState<File | null>(null);
 
   const paymentDetails: PaymentDetails = {
-    paypal: {
-      email: 'taffdsIncPay@gmail.com',
-      instructions: [
-        'Send the payment to the PayPal email address above',
-        'Include your full name and ticket type in the payment note',
-        'Take a screenshot of the payment confirmation',
-        'Upload the screenshot below to complete your registration'
-      ]
-    },
-    paystack: {
+    bank: {
       accountName: 'TAFFD\'s',
       accountNumber: '63111409496',
       bankName: 'First National Bank',
-      //   swiftCode: 'FBNINGLA',
-      //   bankAddress: '35 Marina, Lagos Island, Lagos, Nigeria',
       instructions: [
         'Use the bank details provided above for your transfer',
         'Include your full name and ticket type as payment reference',
@@ -50,7 +33,7 @@ export const Checkout: React.FC = () => {
     }
   };
 
-  const details = method === 'paypal' ? paymentDetails.paypal : paymentDetails.paystack;
+  const details = paymentDetails.bank;
 
   const copyToClipboard = async (text: string) => {
     try {
@@ -151,42 +134,27 @@ export const Checkout: React.FC = () => {
             {/* Payment Details Section */}
             <div className="mb-8">
               <h2 className="text-lg font-semibold text-white mb-4">
-                {method === 'paypal' ? 'PayPal Details' : 'Bank Transfer Details'}
+                Bank Transfer Details
               </h2>
 
               <div className="bg-white/5 rounded-lg p-4 mb-4 space-y-3">
-                {method === 'paypal' ? (
-                  <div className="flex justify-between items-center">
-                    <span className="text-white/60">PayPal Email</span>
-                    <button
-                      onClick={() => copyToClipboard((details as PaymentDetails['paypal']).email)}
-                      className="flex items-center text-amber-400 hover:text-amber-300"
-                    >
-                      {(details as PaymentDetails['paypal']).email}
-                      {copied ? <CheckIcon className="w-4 h-4 ml-2" /> : <ClipboardIcon className="w-4 h-4 ml-2" />}
-                    </button>
-                  </div>
-                ) : (
-                  <>
-                    {Object.entries(details).map(([key, value]) => {
-                      if (key !== 'instructions' && typeof value === 'string') {
-                        return (
-                          <div key={key} className="flex justify-between items-center">
-                            <span className="text-white/60">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
-                            <button
-                              onClick={() => copyToClipboard(value)}
-                              className="flex items-center text-amber-400 hover:text-amber-300"
-                            >
-                              {value}
-                              {copied ? <CheckIcon className="w-4 h-4 ml-2" /> : <ClipboardIcon className="w-4 h-4 ml-2" />}
-                            </button>
-                          </div>
-                        );
-                      }
-                      return null;
-                    })}
-                  </>
-                )}
+                {Object.entries(details).map(([key, value]) => {
+                  if (key !== 'instructions' && typeof value === 'string') {
+                    return (
+                      <div key={key} className="flex justify-between items-center">
+                        <span className="text-white/60">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+                        <button
+                          onClick={() => copyToClipboard(value)}
+                          className="flex items-center text-amber-400 hover:text-amber-300"
+                        >
+                          {value}
+                          {copied ? <CheckIcon className="w-4 h-4 ml-2" /> : <ClipboardIcon className="w-4 h-4 ml-2" />}
+                        </button>
+                      </div>
+                    );
+                  }
+                  return null;
+                })}
               </div>
 
               <div className="space-y-4">

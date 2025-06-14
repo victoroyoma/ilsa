@@ -154,17 +154,31 @@ export const Home: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="bg-gradient-to-b from-blue-900/20 to-black/40 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10">
-              <img src="https://res.cloudinary.com/dmqjqn6x3/image/upload/real_hotel_mo2vrv.png" alt="Sun Sibaya Hotel" className="w-full aspect-video object-cover" />
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">
-                  Luxury Accommodation
-                </h3>
-                <p className="text-white/70">
-                  Experience world-class hospitality with stunning ocean views
-                  and modern amenities at the prestigious Sun Sibaya Hotel.
-                </p>
+            <div className="grid grid-cols-3 gap-4 mt-8">
+            {[
+              {
+              src: "https://res.cloudinary.com/dmqjqn6x3/image/upload/WhatsApp_Image_2025-06-13_at_6.43.23_PM_l38hae.jpg",
+              alt: "Hotel Exterior"
+              },
+              {
+              src: "https://res.cloudinary.com/dmqjqn6x3/image/upload/WhatsApp_Image_2025-06-13_at_6.44.59_PM_wxe8yo.jpg",
+              alt: "Hotel Lobby"
+              },
+              {
+              src: "https://res.cloudinary.com/dmqjqn6x3/image/upload/WhatsApp_Image_2025-06-13_at_6.48.29_PM_cap7yi.jpg", 
+              alt: "Hotel Room"
+              }
+            ].map((image, index) => (
+              <div key={index} className="bg-gradient-to-b from-blue-900/20 to-black/40 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10">
+              <img 
+                src={image.src} 
+                alt={image.alt} 
+                className="w-full aspect-video object-cover hover:scale-105 transition-transform duration-300"
+              />
               </div>
+            ))}
+            <h1>Luxury Accommodation</h1>
+            <p>Experience world-class hospitality with stunning ocean views and modern amenities at the prestigious Sun Sibaya Hotel.</p>
             </div>
         </div>
       </section>

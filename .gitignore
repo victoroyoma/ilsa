@@ -11,6 +11,10 @@ node_modules
 dist
 dist-ssr
 *.local
+# Dependency directories
+jspm_packages
+# Optional npm cache directory      
+.env
 
 # Editor directories and files
 .vscode/*

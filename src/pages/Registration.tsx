@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { ArrowLeftIcon } from 'lucide-react';
+import { appendToSheet } from '../services/sheetsService';
+import { initializePayment } from '../services/paystackService';
+
 interface RegistrationForm {
   firstName: string;
   lastName: string;
@@ -13,11 +16,14 @@ interface RegistrationForm {
   specialAssistance: string;
   requiresTransport: boolean;
 }
+
 export const Registration: React.FC = () => {
   const {
     ticketType,
     price
   } = useParams();
+  const searchParams = new URLSearchParams(window.location.search);
+  const method = searchParams.get('method');
   const navigate = useNavigate();
   const [formData, setFormData] = useState<RegistrationForm>({
     firstName: '',
@@ -37,11 +43,28 @@ export const Registration: React.FC = () => {
       [e.target.name]: value
     }));
   };
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the registration data to your backend
-    // For now, we'll just proceed to payment
-    navigate(`/payment/${ticketType}/${price}`);
+    try {
+      // Save to Google Sheets
+      await appendToSheet({
+        ...formData,
+        ticketType: ticketType || '',
+        price: price || ''
+      });
+
+      // If payment method is Paystack, initialize payment
+      if (method === 'paystack') {
+        const paymentUrl = await initializePayment(formData.email, parseFloat(price?.replace(/[^0-9.]/g, '') || '0'));
+        window.location.href = paymentUrl;
+      } else {
+        // For other payment methods, proceed to regular checkout
+        navigate(`/checkout/${method}/${ticketType}/${price}`);
+      }
+    } catch (error) {
+      console.error('Registration failed:', error);
+      alert('Registration failed. Please try again.');
+    }
   };
   const isFormValid = () => {
     return formData.firstName && formData.lastName && formData.email && formData.country;
