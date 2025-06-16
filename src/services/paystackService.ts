@@ -1,6 +1,10 @@
-const PAYSTACK_PUBLIC_KEY = 'your_paystack_public_key';
+const PAYSTACK_PUBLIC_KEY = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY;
 
 export const initializePayment = async (email: string, amount: number) => {
+  if (!PAYSTACK_PUBLIC_KEY) {
+    throw new Error('Environment variable REACT_APP_PAYSTACK_PUBLIC_KEY is not configured');
+  }
+
   const response = await fetch('https://api.paystack.co/transaction/initialize', {
     method: 'POST',
     headers: {

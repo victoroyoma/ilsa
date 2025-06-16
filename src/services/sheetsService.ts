@@ -19,8 +19,14 @@ interface RegistrationData {
 }
 
 export const appendToSheet = async (data: RegistrationData) => {
+  const webhookUrl = process.env.REACT_APP_GOOGLE_SHEETS_WEBHOOK_URL;
+  
+  if (!webhookUrl) {
+    throw new Error('Environment variable REACT_APP_GOOGLE_SHEETS_WEBHOOK_URL is not configured');
+  }
+
   try {
-    const response = await fetch(process.env.REACT_APP_GOOGLE_SHEETS_WEBHOOK_URL!, {
+    const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,13 +39,15 @@ export const appendToSheet = async (data: RegistrationData) => {
     });
 
     if (!response.ok) {
-      throw new Error('Failed to submit registration');
+      const errorText = await response.text();
+      console.error('Registration API error:', errorText);
+      throw new Error(`Failed to submit registration: ${response.status}`);
     }
 
     return await response.json();
   } catch (error) {
     console.error('Registration error:', error);
-    throw new Error('Registration failed. Please try again.');
+    throw error;
   }
 };
 
