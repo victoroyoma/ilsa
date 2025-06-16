@@ -33,7 +33,7 @@ export function App() {
               <Route path="/tickets" element={<Tickets />} />
               <Route path="/logistics" element={<Logistics />} />
               <Route path="/registration/:ticketType/:price" element={<Registration />} />
-              <Route path="/checkout/:method/:ticketType/:price" element={<Checkout />} />
+              <Route path="/checkout/:method?/:ticketType/:price" element={<Checkout />} />
             </Routes>
           </main>
           <Footer />

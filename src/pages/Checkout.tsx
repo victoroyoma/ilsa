@@ -13,7 +13,7 @@ interface PaymentDetails {
 }
 
 export const Checkout: React.FC = () => {
-  const { method, ticketType, price } = useParams();
+  const { method = 'bank', ticketType, price } = useParams();
   const navigate = useNavigate();
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -95,7 +95,8 @@ export const Checkout: React.FC = () => {
     }
   };
 
-  if (!method || !ticketType || !price || !details) {
+  // Update the condition to only check for required parameters
+  if (!ticketType || !price || !details) {
     return <div className="w-full min-h-screen pt-24 text-center">
       <p className="text-white">Invalid checkout session</p>
       <Button variant="secondary" onClick={() => navigate('/tickets')}>

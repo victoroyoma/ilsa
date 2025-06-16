@@ -59,7 +59,7 @@ export const Registration: React.FC = () => {
         const paymentUrl = await initializePayment(formData.email, parseFloat(price?.replace(/[^0-9.]/g, '') || '0'));
         window.location.href = paymentUrl;
       } else {
-        navigate(`/checkout/bank/${ticketType}/${price}`);
+        navigate(`/checkout/bank/${encodeURIComponent(ticketType || '')}/${encodeURIComponent(price || '')}`);
       }
     } catch (error) {
       console.error('Registration failed:', error);
@@ -191,7 +191,6 @@ export const Registration: React.FC = () => {
                 className="w-full" 
                 type="submit" 
                 disabled={!isFormValid()}
-                onClick={() => navigate(`/checkout/${ticketType}/${price}`)}
               >
                 Proceed to Payment
               </Button>
