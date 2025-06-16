@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { ArrowLeftIcon } from 'lucide-react';
-import { appendToSheet } from '../services/sheetsService';
-import { initializePayment } from '../services/paystackService';
 import { submitRegistration } from '../services/registrationService';
+import { initializePayment } from '../services/paystackService';
 
 interface RegistrationForm {
   firstName: string;
@@ -61,9 +60,9 @@ export const Registration: React.FC = () => {
       } else {
         navigate(`/checkout/bank/${encodeURIComponent(ticketType || '')}/${encodeURIComponent(price || '')}`);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Registration failed:', error);
-      alert('Registration failed. Please try again.');
+      alert(error.message || 'Registration failed. Please try again.');
     }
   };
   const isFormValid = () => {

@@ -14,22 +14,31 @@ interface RegistrationData {
 
 export const submitRegistration = async (data: RegistrationData) => {
   try {
-    const SHEET_URL = process.env.REACT_APP_SHEET_WEBHOOK_URL;
+    const webhookUrl = process.env.REACT_APP_GOOGLE_SHEETS_WEBHOOK_URL;
     
-    const response = await fetch(SHEET_URL || '', {
+    if (!webhookUrl) {
+      throw new Error('Webhook URL not configured');
+    }
+
+    const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         ...data,
-        timestamp: new Date().toISOString()
+        registrationDate: new Date().toISOString(),
+        requiresTransport: data.requiresTransport ? 'Yes' : 'No'
       })
     });
 
     if (!response.ok) {
-      throw new Error('Failed to submit registration');
+      const errorText = await response.text();
+      console.error('Registration API error:', errorText);
+      throw new Error(`Failed to submit registration: ${response.status}`);
     }
+
+    const result = await response.json();
 
     // Send WhatsApp notification
     const message = encodeURIComponent(
@@ -42,7 +51,7 @@ export const submitRegistration = async (data: RegistrationData) => {
     
     window.open(`https://wa.me/27636568545?text=${message}`, '_blank');
 
-    return await response.json();
+    return result;
   } catch (error) {
     console.error('Registration error:', error);
     throw error;
