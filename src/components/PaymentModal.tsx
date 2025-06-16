@@ -15,14 +15,14 @@ interface PaymentModalProps {
 }
 const paymentOptions: PaymentOption[] = [{
   id: 'paystack',
-  name: 'Card Payment / Bank Transfer',
-  description: 'Pay securely with Paystack',
+  name: 'Card Payment',
+  description: 'Pay securely with card via Paystack',
   icon: 'https://website-v3-assets.s3.amazonaws.com/assets/img/hero/Paystack-mark-white-twitter.png'
 }, {
   id: 'bank',
-  name: 'Manual Bank Transfer',
-  description: 'Direct bank transfer to our account',
-  icon: 'path_to_bank_icon'
+  name: 'Bank Transfer',
+  description: 'Manual bank transfer to our account',
+  icon: '/bank-icon.png'
 }];
 export const PaymentModal: React.FC<PaymentModalProps> = ({
   isOpen,

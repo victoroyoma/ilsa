@@ -1,9 +1,3 @@
-import { google } from 'googleapis';
-
-const sheets = google.sheets('v4');
-const SPREADSHEET_ID = process.env.REACT_APP_SHEET_ID;
-const API_KEY = process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
-
 interface RegistrationData {
   firstName: string;
   lastName: string;
@@ -18,17 +12,18 @@ interface RegistrationData {
   price: string;
 }
 
-export const appendToSheet = async (data: RegistrationData) => {
+export const submitRegistration = async (data: RegistrationData) => {
   try {
-    const response = await fetch(process.env.REACT_APP_GOOGLE_SHEETS_WEBHOOK_URL!, {
+    const SHEET_URL = process.env.REACT_APP_GOOGLE_SHEET_URL;
+    
+    const response = await fetch(SHEET_URL || '', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         ...data,
-        registrationDate: new Date().toISOString(),
-        requiresTransport: data.requiresTransport ? 'Yes' : 'No'
+        timestamp: new Date().toISOString()
       })
     });
 
@@ -39,8 +34,6 @@ export const appendToSheet = async (data: RegistrationData) => {
     return await response.json();
   } catch (error) {
     console.error('Registration error:', error);
-    throw new Error('Registration failed. Please try again.');
+    throw error;
   }
 };
-
-

@@ -4,6 +4,7 @@ import { Button } from '../components/Button';
 import { ArrowLeftIcon } from 'lucide-react';
 import { appendToSheet } from '../services/sheetsService';
 import { initializePayment } from '../services/paystackService';
+import { submitRegistration } from '../services/registrationService';
 
 interface RegistrationForm {
   firstName: string;
@@ -46,20 +47,19 @@ export const Registration: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      // Save to Google Sheets
-      await appendToSheet({
+      // Submit registration data
+      await submitRegistration({
         ...formData,
         ticketType: ticketType || '',
         price: price || ''
       });
 
-      // If payment method is Paystack, initialize payment
+      // Proceed to payment
       if (method === 'paystack') {
         const paymentUrl = await initializePayment(formData.email, parseFloat(price?.replace(/[^0-9.]/g, '') || '0'));
         window.location.href = paymentUrl;
       } else {
-        // For other payment methods, proceed to regular checkout
-        navigate(`/checkout/${method}/${ticketType}/${price}`);
+        navigate(`/checkout/bank/${ticketType}/${price}`);
       }
     } catch (error) {
       console.error('Registration failed:', error);
