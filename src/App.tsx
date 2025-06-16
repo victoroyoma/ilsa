@@ -4,7 +4,7 @@ import { Home } from './pages/Home'
 import { Speakers } from './pages/Speakers'
 import { Tickets } from './pages/Tickets'
 import { About } from './pages/About'
-// import { Logistics } from './pages/Logistics';
+import { Logistics } from './pages/Logistics';
 import { Background } from './components/Background'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
@@ -31,6 +31,7 @@ export function App() {
               <Route path="/about" element={<About />} />
               <Route path="/speakers" element={<Speakers />} />
               <Route path="/tickets" element={<Tickets />} />
+              <Route path="/logistics" element={<Logistics />} />
               <Route path="/registration/:ticketType/:price" element={<Registration />} />
               <Route path="/checkout/:method/:ticketType/:price" element={<Checkout />} />
             </Routes>
