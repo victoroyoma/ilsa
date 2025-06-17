@@ -23,11 +23,17 @@ export const submitRegistration = async (data: RegistrationData) => {
     const reference = `ILSA-${uuidv4().substring(0, 8)}`;
     
     // Save registration to Airtable
-    const recordId = await submitToAirtable({
-      ...data,
-      paymentStatus: 'Pending',
-      paymentMethod: data.paymentMethod || 'bank'
-    });
+    let recordId;
+    try {
+      recordId = await submitToAirtable({
+        ...data,
+        paymentStatus: 'Pending',
+        paymentMethod: data.paymentMethod || 'bank'
+      });
+    } catch (airtableError: any) {
+      console.error('Airtable submission failed:', airtableError);
+      throw new Error(airtableError.message || 'Failed to save registration. Please try again.');
+    }
 
     // Also save registration to Google Sheets if webhook URL is configured
     try {
@@ -54,23 +60,33 @@ export const submitRegistration = async (data: RegistrationData) => {
     localStorage.setItem('payment_reference', reference);
     
     // Send WhatsApp notification
-    const message = encodeURIComponent(
-      `*New ILSA 2025 Registration*\n\n` +
-      `Name: ${data.firstName} ${data.lastName}\n` +
-      `Email: ${data.email}\n` +
-      `Ticket: ${data.ticketType}\n` +
-      `Price: ${data.price}`
-    );
-    
-    window.open(`https://wa.me/27636568545?text=${message}`, '_blank');
+    try {
+      const message = encodeURIComponent(
+        `*New ILSA 2025 Registration*\n\n` +
+        `Name: ${data.firstName} ${data.lastName}\n` +
+        `Email: ${data.email}\n` +
+        `Ticket: ${data.ticketType}\n` +
+        `Price: ${data.price}`
+      );
+      
+      window.open(`https://wa.me/27636568545?text=${message}`, '_blank');
+    } catch (notificationError) {
+      // Don't fail if notification fails
+      console.error('WhatsApp notification failed:', notificationError);
+    }
 
     return { recordId, reference };
-  } catch (error) {
+  } catch (error: any) {
     console.error('Registration error:', error);
-    throw new Error('Failed to submit registration. Please check your internet connection and try again.');
+    throw new Error(error.message || 'Failed to submit registration. Please check your internet connection and try again.');
   }
 };
 
 export const updatePaymentInformation = async (recordId: string, status: string): Promise<void> => {
-  await updatePaymentStatus(recordId, status);
+  try {
+    await updatePaymentStatus(recordId, status);
+  } catch (error: any) {
+    console.error('Payment update error:', error);
+    throw new Error(error.message || 'Failed to update payment information. Please try again later.');
+  }
 };

@@ -22,7 +22,8 @@ interface RegistrationData {
 
 export const submitToAirtable = async (data: RegistrationData): Promise<string> => {
   if (!AIRTABLE_API_KEY || !AIRTABLE_BASE_ID) {
-    throw new Error('Airtable API key or Base ID not configured');
+    console.error('Missing Airtable configuration');
+    throw new Error('Airtable API key or Base ID not configured. Please contact support.');
   }
 
   try {
@@ -49,13 +50,30 @@ export const submitToAirtable = async (data: RegistrationData): Promise<string> 
           'Payment Method': data.paymentMethod || '',
           'Payment Status': data.paymentStatus || 'Pending'
         }
-      }
+      },
+      timeout: 10000 // 10 second timeout
     });
 
     return response.data.id;
-  } catch (error) {
+  } catch (error: any) {
     console.error('Airtable submission error:', error);
-    throw new Error('Failed to submit registration data to Airtable');
+    
+    if (error.code === 'ECONNABORTED') {
+      throw new Error('Connection to Airtable timed out. Please try again later.');
+    }
+    
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.error('Airtable error response:', error.response.data);
+      throw new Error(`Airtable error: ${error.response.status} - ${error.response.data.error?.message || 'Unknown error'}`);
+    } else if (error.request) {
+      // The request was made but no response was received
+      throw new Error('No response received from Airtable. Please check your internet connection.');
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      throw new Error(`Failed to submit registration: ${error.message}`);
+    }
   }
 };
 
@@ -76,10 +94,17 @@ export const updatePaymentStatus = async (recordId: string, status: string): Pro
         fields: {
           'Payment Status': status
         }
-      }
+      },
+      timeout: 10000 // 10 second timeout
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Failed to update payment status:', error);
-    throw new Error('Failed to update payment status in Airtable');
+    if (error.response) {
+      throw new Error(`Failed to update payment status: ${error.response.status} - ${error.response.data.error?.message || 'Unknown error'}`);
+    } else if (error.request) {
+      throw new Error('No response received from Airtable. Please check your internet connection.');
+    } else {
+      throw new Error(`Failed to update payment status: ${error.message}`);
+    }
   }
 };
