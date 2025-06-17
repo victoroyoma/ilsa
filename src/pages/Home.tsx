@@ -196,12 +196,12 @@ export const Home: React.FC = () => {
             duration: '2 Days'
           }, {
             title: 'Drakensberg Mountains',
-            image: 'https://images.unsplash.com/photo-1577948000111-9c970dfe3680?auto=format&fit=crop&w=800&q=80',
+            image: 'https://www.nature-reserve.co.za/images/drakensberg-mountain-hampton-01-590x390.jpg',
             description: 'Explore UNESCO World Heritage sites featuring ancient rock art and breathtaking mountain landscapes.',
             duration: '3 Days'
           }, {
             title: 'Durban Cultural Tour',
-            image: 'https://images.unsplash.com/photo-1578914134488-d16435b259cc?auto=format&fit=crop&w=800&q=80',
+            image: 'https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/06/e4/a8/17.jpg',
             description: 'Discover rich Zulu heritage, Indian influences, and colonial history in vibrant markets and museums.',
             duration: '1 Day'
           }].map((tour, index) => <div key={index} className="bg-gradient-to-b from-blue-900/20 to-black/40 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 group hover:border-amber-500/30 transition-all duration-300">
