@@ -1,9 +1,3 @@
-import { google } from 'googleapis';
-
-const sheets = google.sheets('v4');
-const SPREADSHEET_ID = process.env.REACT_APP_SHEET_ID;
-const API_KEY = process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
-
 interface RegistrationData {
   firstName: string;
   lastName: string;
@@ -19,10 +13,10 @@ interface RegistrationData {
 }
 
 export const appendToSheet = async (data: RegistrationData) => {
-  const webhookUrl = process.env.REACT_APP_GOOGLE_SHEETS_WEBHOOK_URL;
+  const webhookUrl = import.meta.env.VITE_GOOGLE_SHEETS_WEBHOOK_URL;
   
   if (!webhookUrl) {
-    throw new Error('Environment variable REACT_APP_GOOGLE_SHEETS_WEBHOOK_URL is not configured');
+    throw new Error('Environment variable VITE_GOOGLE_SHEETS_WEBHOOK_URL is not configured');
   }
 
   try {
@@ -50,5 +44,6 @@ export const appendToSheet = async (data: RegistrationData) => {
     throw error;
   }
 };
+
 
 

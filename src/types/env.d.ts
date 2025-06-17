@@ -1,3 +1,10 @@
+/// <reference types="vite/client" />
+
+interface ImportMetaEnv {
+  readonly VITE_GOOGLE_SHEETS_WEBHOOK_URL: string;
+  // Add any other Vite env variables you need here
+}
+
 declare namespace NodeJS {
   interface ProcessEnv {
     REACT_APP_PAYSTACK_PUBLIC_KEY: string;
