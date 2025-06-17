@@ -48,10 +48,10 @@ export const PartnerCarousel: React.FC = () => {
           {[...partners, ...partners].map((partner, index) => <div key={index} className="w-1/3 flex-shrink-0 px-4" style={{
           minWidth: 'calc(100% / 3)'
         }}>
-              <div className="bg-black/30 rounded-lg p-4 h-40 md:h-32 flex items-center justify-center group hover:bg-black/40 transition-all duration-300">
+              <div className="bg-black/30 rounded-lg p-4 h-56 md:h-40 flex items-center justify-center group hover:bg-black/40 transition-all duration-300">
                 <img 
                   src={partner.logo} 
-                  className="max-h-32 md:max-h-20 max-w-full w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" 
+                  className="max-h-48 md:max-h-32 max-w-full w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" 
                   alt="Partner logo"
                 />
               </div>

@@ -199,7 +199,7 @@ export const Registration: React.FC = () => {
                 <label className="block text-white mb-2" htmlFor="dietaryRequirements">
                   Dietary Requirements
                 </label>
-                <input type="text" id="dietaryRequirements" name="dietaryRequirements" value={formData.dietaryRequirements} onChange={handleChange} placeholder="e.g., Vegetarian, Halal, etc." className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500" />
+                <input type="text" id="dietaryRequirements" name="dietaryRequirements" value={formData.dietaryRequirements} onChange={handleChange} placeholder="e.g., Vegetarian, Halaal, etc." className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500" />
               </div>
               <div>
                 <label className="block text-white mb-2" htmlFor="specialAssistance">
@@ -211,7 +211,7 @@ export const Registration: React.FC = () => {
                 <label className="flex items-center space-x-3">
                   <input type="checkbox" name="requiresTransport" checked={formData.requiresTransport} onChange={handleChange} className="w-4 h-4 rounded border-white/10 bg-white/5 text-amber-500 focus:ring-amber-500 focus:ring-offset-0" />
                   <span className="text-white">
-                    I require airport transfer services
+                    I require transport to the event
                   </span>
                 </label>
                 {formData.requiresTransport && <p className="mt-2 text-sm text-white/60">
