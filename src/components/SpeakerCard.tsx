@@ -4,7 +4,7 @@ interface SpeakerProps {
   name: string;
   title: string;
   organization: string;
-  linkedInUrl?: string;  // Make optional
+  linkedInUrl?: string;
   imageUrl: string;
 }
 
@@ -20,13 +20,16 @@ export const SpeakerCard: React.FC<SpeakerProps> = ({
       <div className="relative w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-900/40 to-black/60 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 shadow-xl">
           <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 via-transparent to-blue-500/10"></div>
-          <div className="mx-4 mt-4">
+          
+          {/* Modified image container */}
+          <div className="mx-4 mt-4 h-[200px] overflow-hidden rounded-lg border border-white/20">
             <img
               src={imageUrl}
               alt={name}
-              className="w-full max-h-[200px] object-cover object-top rounded-lg border border-white/20"
+              className="w-full h-full object-cover object-center"
             />
           </div>
+          
           <div className="p-6 flex flex-col justify-between flex-1">
             <div>
               <h3 className="text-xl font-bold text-white mb-1 group-hover:text-amber-400 transition-colors">{name}</h3>
@@ -39,7 +42,7 @@ export const SpeakerCard: React.FC<SpeakerProps> = ({
                 target="_blank"
                 rel="noopener noreferrer" 
                 className="mt-4 flex items-center justify-center px-4 py-2 bg-blue-600/20 hover:bg-blue-600/30 rounded-lg text-blue-400 transition-colors cursor-pointer z-20"
-                onClick={(e) => {
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                   e.preventDefault();
                   window.open(linkedInUrl, '_blank');
                 }}

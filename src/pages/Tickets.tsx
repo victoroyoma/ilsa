@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Button } from '../components/Button';
-import {  AlertCircleIcon, CheckIcon } from 'lucide-react';
+import { AlertCircleIcon, CheckIcon } from 'lucide-react';
 import { PaymentModal } from '../components/PaymentModal';
 import { useNavigate } from 'react-router-dom';
+import { getPaystackUrlForTicket } from '../utils/paystackUrls';
 
 interface TicketTierProps {
   name: string;
@@ -51,10 +52,12 @@ export const Tickets: React.FC = () => {
     price: string;
   } | null>(null);
   const navigate = useNavigate();
+  
   const handlePurchase = (type: string, price: string) => {
-    // Navigate to registration form with ticket details
+    // Always navigate to registration form first
     navigate(`/registration/${encodeURIComponent(type)}/${encodeURIComponent(price)}`);
   };
+
   return <div className="w-full min-h-screen pt-24">
     <div className="container mx-auto px-4 md:px-8 py-12">
       <div className="max-w-4xl mx-auto text-center mb-16">

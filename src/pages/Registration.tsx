@@ -3,7 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { ArrowLeftIcon } from 'lucide-react';
 import { submitRegistration } from '../services/registrationService';
-import { initializePayment } from '../services/paystackService';
+// Remove Paystack and PayPal service imports
+import { getPaystackUrlForTicket } from '../utils/paystackUrls';
+import { createPaypalOrder } from '../services/paypalService';
 
 interface RegistrationForm {
   firstName: string;
@@ -36,6 +38,9 @@ export const Registration: React.FC = () => {
     specialAssistance: '',
     requiresTransport: false
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState(method || 'bank');
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const value = e.target instanceof HTMLInputElement && e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setFormData(prev => ({
@@ -43,26 +48,55 @@ export const Registration: React.FC = () => {
       [e.target.name]: value
     }));
   };
+  const handlePaymentMethodChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPaymentMethod(e.target.value);
+  };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isFormValid()) return;
+
+    setIsSubmitting(true);
+    
     try {
-      // Submit registration data
-      await submitRegistration({
+      // Submit registration data to Airtable
+      const { recordId, reference } = await submitRegistration({
         ...formData,
         ticketType: ticketType || '',
-        price: price || ''
+        price: price || '',
+        paymentMethod: paymentMethod
       });
 
-      // Proceed to payment
-      if (method === 'paystack') {
-        const paymentUrl = await initializePayment(formData.email, parseFloat(price?.replace(/[^0-9.]/g, '') || '0'));
-        window.location.href = paymentUrl;
-      } else {
-        navigate(`/checkout/bank/${encodeURIComponent(ticketType || '')}/${encodeURIComponent(price || '')}`);
+      // Store recordId in localStorage for payment verification
+      localStorage.setItem('registration_record_id', recordId);
+      
+      // Proceed to payment based on selected method
+      const priceValue = parseFloat(price?.replace(/[^0-9.]/g, '') || '0');
+      
+      switch (paymentMethod) {
+        case 'paystack':
+          // Use direct Paystack URL instead of API
+          const paystackUrl = getPaystackUrlForTicket(ticketType || '');
+          if (paystackUrl) {
+            window.location.href = paystackUrl;
+          } else {
+            throw new Error('Payment link not available for this ticket type');
+          }
+          break;
+          
+        case 'paypal':
+          const description = `ILSA Conference - ${ticketType} Ticket`;
+          const paypalUrl = await createPaypalOrder(priceValue, 'ZAR', description, formData.email);
+          window.location.href = paypalUrl;
+          break;
+          
+        default: // bank transfer
+          navigate(`/checkout/bank/${encodeURIComponent(ticketType || '')}/${encodeURIComponent(price || '')}`);
       }
     } catch (error: any) {
       console.error('Registration failed:', error);
       alert(error.message || 'Registration failed. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
   const isFormValid = () => {
@@ -185,13 +219,56 @@ export const Registration: React.FC = () => {
                     to the event.
                   </p>}
               </div>
+              
+              {/* Add payment method selection */}
+              <div className="bg-white/5 rounded-lg p-4 mb-6">
+                <h3 className="text-white mb-3 font-medium">Select Payment Method</h3>
+                <div className="space-y-3">
+                  <label className="flex items-center space-x-3">
+                    <input 
+                      type="radio" 
+                      name="paymentMethod" 
+                      value="bank" 
+                      checked={paymentMethod === 'bank'} 
+                      onChange={handlePaymentMethodChange}
+                      className="w-4 h-4 text-amber-500 focus:ring-amber-500 focus:ring-offset-0"
+                    />
+                    <span className="text-white">Bank Transfer</span>
+                  </label>
+                  
+                  <label className="flex items-center space-x-3">
+                    <input 
+                      type="radio" 
+                      name="paymentMethod" 
+                      value="paystack" 
+                      checked={paymentMethod === 'paystack'} 
+                      onChange={handlePaymentMethodChange}
+                      className="w-4 h-4 text-amber-500 focus:ring-amber-500 focus:ring-offset-0"
+                    />
+                    <span className="text-white">Pay with Card (Paystack)</span>
+                  </label>
+                  
+                  <label className="flex items-center space-x-3">
+                    <input 
+                      type="radio" 
+                      name="paymentMethod" 
+                      value="paypal" 
+                      checked={paymentMethod === 'paypal'} 
+                      onChange={handlePaymentMethodChange}
+                      className="w-4 h-4 text-amber-500 focus:ring-amber-500 focus:ring-offset-0"
+                    />
+                    <span className="text-white">PayPal</span>
+                  </label>
+                </div>
+              </div>
+              
               <Button 
                 variant="primary" 
                 className="w-full" 
                 type="submit" 
-                disabled={!isFormValid()}
+                disabled={!isFormValid() || isSubmitting}
               >
-                Proceed to Payment
+                {isSubmitting ? 'Processing...' : 'Proceed to Payment'}
               </Button>
             </form>
           </div>

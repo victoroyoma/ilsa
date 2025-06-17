@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { } from 'react';
 import { X as XIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { getPaystackUrlForTicket } from '../utils/paystackUrls';
 interface PaymentOption {
   id: string;
   name: string;
@@ -31,10 +32,17 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
   price
 }) => {
   const navigate = useNavigate();
-  const [] = useState<string | null>(null);
+  
   const handlePayment = (optionId: string) => {
     if (optionId === 'paystack') {
-      navigate(`/registration/${ticketType}/${price}?method=paystack`);
+      // Get direct Paystack URL
+      const paystackUrl = getPaystackUrlForTicket(ticketType);
+      if (paystackUrl) {
+        window.location.href = paystackUrl;
+      } else {
+        // Fallback to registration page if no direct URL exists
+        navigate(`/registration/${ticketType}/${price}?method=paystack`);
+      }
     } else {
       navigate(`/registration/${ticketType}/${price}?method=bank`);
     }

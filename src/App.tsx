@@ -10,6 +10,7 @@ import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 import { Checkout } from './pages/Checkout';
 import { Registration } from './pages/Registration';
+import { PaymentVerification } from './pages/PaymentVerification';
 // import { PaymentModalPage } from './components/PaymentModalPage';
 export function App() {
   const [activePage, setActivePage] = useState('home')
@@ -34,6 +35,7 @@ export function App() {
               <Route path="/logistics" element={<Logistics />} />
               <Route path="/registration/:ticketType/:price" element={<Registration />} />
               <Route path="/checkout/:method?/:ticketType/:price" element={<Checkout />} />
+              <Route path="/payment/verify" element={<PaymentVerification />} />
             </Routes>
           </main>
           <Footer />
