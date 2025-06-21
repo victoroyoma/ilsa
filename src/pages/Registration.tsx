@@ -42,7 +42,6 @@ export const Registration: React.FC = () => {
       [e.target.name]: value
     }));
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isFormValid()) return;

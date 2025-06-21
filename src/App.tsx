@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { Speakers } from './pages/Speakers'
 import { Tickets } from './pages/Tickets'
@@ -12,6 +12,9 @@ import { Checkout } from './pages/Checkout';
 import { Registration } from './pages/Registration';
 import { PaymentSelection } from './pages/PaymentSelection';
 import { PaymentVerification } from './pages/PaymentVerification';
+import { BankTransfer } from './pages/BankTransfer';
+import { Confirmation } from './pages/Confirmation';
+
 // import { PaymentModalPage } from './components/PaymentModalPage';
 export function App() {
   const [activePage, setActivePage] = useState('home')
@@ -38,6 +41,9 @@ export function App() {
               <Route path="/payment-selection/:ticketType/:price/:recordId" element={<PaymentSelection />} />
               <Route path="/checkout/:method?/:ticketType/:price" element={<Checkout />} />
               <Route path="/payment/verify" element={<PaymentVerification />} />
+              <Route path="/checkout/bank/:ticketType/:price" element={<BankTransfer />} />
+              <Route path="/confirmation" element={<Confirmation />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
           <Footer />

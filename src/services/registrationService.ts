@@ -61,21 +61,17 @@ export const submitRegistration = async (data: RegistrationData) => {
     localStorage.setItem('payment_reference', reference);
     localStorage.setItem('registration_email', data.email);
     
-    // Send WhatsApp notification
-    try {
-      const message = encodeURIComponent(
-        `*New ILSA 2025 Registration*\n\n` +
-        `Name: ${data.firstName} ${data.lastName}\n` +
-        `Email: ${data.email}\n` +
-        `Ticket: ${data.ticketType}\n` +
-        `Price: ${data.price}`
-      );
-      
-      window.open(`https://wa.me/27636568545?text=${message}`, '_blank');
-    } catch (notificationError) {
-      // Don't fail if notification fails
-      console.error('WhatsApp notification failed:', notificationError);
-    }
+    // Create WhatsApp notification message but don't open it automatically
+    const message = encodeURIComponent(
+      `*New ILSA 2025 Registration*\n\n` +
+      `Name: ${data.firstName} ${data.lastName}\n` +
+      `Email: ${data.email}\n` +
+      `Ticket: ${data.ticketType}\n` +
+      `Price: ${data.price}`
+    );
+    
+    // Store the WhatsApp notification URL for admin use only
+    localStorage.setItem('admin_notification_url', `https://wa.me/27636568545?text=${message}`);
 
     return { recordId, reference };
   } catch (error: any) {
