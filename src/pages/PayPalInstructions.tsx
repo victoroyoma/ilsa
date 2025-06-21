@@ -17,7 +17,7 @@ export const PayPalInstructions: React.FC = () => {
   const recordId = localStorage.getItem('registration_record_id') || '';
   
   // PayPal account to send money to
-  const paypalEmail = 'payments@ilsa2025.com';
+  const paypalEmail = 'taffdsIncPay@gmail.com';
   
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text).then(() => {
