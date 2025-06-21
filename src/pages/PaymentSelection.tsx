@@ -7,10 +7,14 @@ import { getPaystackUrlForTicket } from '../utils/paystackUrls';
 import { createPaypalOrder } from '../services/paypalService';
 
 export const PaymentSelection: React.FC = () => {
-  const { ticketType, price, recordId } = useParams();
+  const { ticketType, price } = useParams();
   const navigate = useNavigate();
   const [paymentMethod, setPaymentMethod] = useState<string>('bank');
   const [isProcessing, setIsProcessing] = useState(false);
+  
+  // Get record ID from localStorage
+  const recordId = localStorage.getItem('registration_record_id');
+  const email = localStorage.getItem('registration_email');
 
   if (!recordId || !ticketType || !price) {
     navigate('/tickets');
@@ -41,12 +45,9 @@ export const PaymentSelection: React.FC = () => {
             throw new Error('Payment link not available for this ticket type');
           }
           break;
-            case 'paypal':
+        case 'paypal':
           const description = `ILSA Conference - ${ticketType} Ticket`;
-          // We need email for PayPal, but we don't have it here
-          // Let's use a temporary solution by getting from localStorage
-          const email = localStorage.getItem('registration_email') || '';
-          const paypalUrl = await createPaypalOrder(priceValue, 'ZAR', description, email);
+          const paypalUrl = await createPaypalOrder(priceValue, 'ZAR', description, email || '');
           window.location.href = paypalUrl;
           break;
           

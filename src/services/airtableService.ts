@@ -63,8 +63,7 @@ export const submitToAirtable = async (data: RegistrationData): Promise<string> 
       headers: {
         'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
         'Content-Type': 'application/json'
-      },
-      data: {        fields: {
+      },      data: {        fields: {
           'First Name': data.firstName,
           'Last Name': data.lastName,
           'Email': data.email,
@@ -75,9 +74,8 @@ export const submitToAirtable = async (data: RegistrationData): Promise<string> 
           'Special Assistance': data.specialAssistance || '',
           'Requires Transport': formatBoolean(data.requiresTransport),
           'Ticket Type': data.ticketType,
-          'Price': data.price,
-          'Payment Method': mapPaymentMethod(data.paymentMethod || 'bank'),
-          'Payment Status': data.paymentStatus || 'Pending'
+          'Price': data.price
+          // Payment fields removed from initial registration
         }
       },
       timeout: 10000 // 10 second timeout

@@ -14,7 +14,6 @@ interface RegistrationData {
   requiresTransport: boolean;
   ticketType: string;
   price: string;
-  paymentMethod?: string;
 }
 
 export const submitRegistration = async (data: RegistrationData) => {
@@ -23,12 +22,10 @@ export const submitRegistration = async (data: RegistrationData) => {
     const reference = `ILSA-${uuidv4().substring(0, 8)}`;
     
     // Save registration to Airtable
-    let recordId;
-    try {
+    let recordId;    try {
       recordId = await submitToAirtable({
-        ...data,
-        paymentStatus: 'Pending',
-        // Don't set payment method yet
+        ...data
+        // Payment-related fields completely removed
       });
     } catch (airtableError: any) {
       console.error('Airtable submission failed:', airtableError);
@@ -59,11 +56,10 @@ export const submitRegistration = async (data: RegistrationData) => {
     } catch (sheetsError) {
       // Log but don't fail if Google Sheets submission fails
       console.error('Google Sheets submission failed:', sheetsError);
-    }
-
-    // Store in localStorage for later use
+    }    // Store in localStorage for later use
     localStorage.setItem('registration_record_id', recordId);
     localStorage.setItem('payment_reference', reference);
+    localStorage.setItem('registration_email', data.email);
     
     // Send WhatsApp notification
     try {
