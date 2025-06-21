@@ -46,13 +46,12 @@ export const submitToAirtable = async (data: RegistrationData): Promise<string> 
         'Content-Type': 'application/json'
       },
       data: {
-        fields: {
-          'First Name': data.firstName,
+        fields: {          'First Name': data.firstName,
           'Last Name': data.lastName,
           'Email': data.email,
           'Organization': data.organization || '',
           'Job Title': data.jobTitle || '',
-          'Country': data.country,
+          'Country/Region': data.country,
           'Dietary Requirements': data.dietaryRequirements || '',
           'Special Assistance': data.specialAssistance || '',
           'Requires Transport': data.requiresTransport,
