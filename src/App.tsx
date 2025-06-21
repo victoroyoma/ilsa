@@ -4,7 +4,6 @@ import { Home } from './pages/Home'
 import { Speakers } from './pages/Speakers'
 import { Tickets } from './pages/Tickets'
 import { About } from './pages/About'
-import { Logistics } from './pages/Logistics';
 import { Background } from './components/Background'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
@@ -14,6 +13,9 @@ import { PaymentSelection } from './pages/PaymentSelection';
 import { PaymentVerification } from './pages/PaymentVerification';
 import { BankTransfer } from './pages/BankTransfer';
 import { Confirmation } from './pages/Confirmation';
+import { PayPalInstructions } from './pages/PayPalInstructions';
+import { PaymentSuccess } from './pages/PaymentSuccess';
+import { Logistics } from './pages/Logistics'
 
 // import { PaymentModalPage } from './components/PaymentModalPage';
 export function App() {
@@ -35,13 +37,16 @@ export function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/speakers" element={<Speakers />} />
-              <Route path="/tickets" element={<Tickets />} />
               <Route path="/logistics" element={<Logistics />} />
+              <Route path="/tickets" element={<Tickets />} />
               <Route path="/registration/:ticketType/:price" element={<Registration />} />
+              
               <Route path="/payment-selection/:ticketType/:price/:recordId" element={<PaymentSelection />} />
               <Route path="/checkout/:method?/:ticketType/:price" element={<Checkout />} />
               <Route path="/payment/verify" element={<PaymentVerification />} />
               <Route path="/checkout/bank/:ticketType/:price" element={<BankTransfer />} />
+              <Route path="/paypal-instructions/:reference" element={<PayPalInstructions />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/confirmation" element={<Confirmation />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

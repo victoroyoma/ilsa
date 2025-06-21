@@ -10,7 +10,7 @@
  * @param currency - The currency code (e.g., 'ZAR')
  * @param description - Description of the purchase
  * @param email - Customer email for reference
- * @returns URL to redirect the user to for payment
+ * @returns Instructions page URL for manual PayPal payment
  */
 export const createPaypalOrder = async (
   amount: number, 
@@ -18,18 +18,17 @@ export const createPaypalOrder = async (
   description: string,
   email: string
 ): Promise<string> => {
-  // In a real implementation, this would create a PayPal order via API
-  // For now, we'll simulate by redirecting to a PayPal checkout page
-  
   // Get payment reference from localStorage
   const reference = localStorage.getItem('payment_reference') || 'ILSA-Ticket';
   
-  // Log the attempted PayPal payment
-  console.log(`Creating PayPal order: ${amount} ${currency} for ${email} - ${description}`);
+  // Store payment details in localStorage for the instructions page
+  localStorage.setItem('paypal_payment_amount', amount.toString());
+  localStorage.setItem('paypal_payment_currency', currency);
+  localStorage.setItem('paypal_payment_description', description);
+  localStorage.setItem('paypal_payment_email', email);
   
-  // In a real implementation, you would use the PayPal SDK or API
-  // For now, simulate with a redirect to PayPal
-  return `https://www.paypal.com/checkoutnow?token=demo-${reference}`;
+  // Return URL to the PayPal instructions page
+  return `/paypal-instructions/${encodeURIComponent(reference)}`;
 };
 
 /**
@@ -43,4 +42,24 @@ export const verifyPaypalPayment = async (orderId: string): Promise<boolean> => 
   // For now, we'll simulate success
   console.log(`Verifying PayPal payment: ${orderId}`);
   return true;
+};
+
+/**
+ * Capture a PayPal payment
+ * 
+ * @param orderId - The PayPal order ID to capture
+ * @returns Object with payment capture details
+ */
+export const capturePaypalPayment = async (orderId: string): Promise<{ status: string; id: string }> => {
+  // In a real implementation, this would capture the payment via PayPal API
+  // For now, we'll simulate a successful capture
+  console.log(`Capturing PayPal payment: ${orderId}`);
+  
+  // Simulate processing delay
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  
+  return {
+    status: 'COMPLETED',
+    id: `CAPTURE-${orderId}`
+  };
 };

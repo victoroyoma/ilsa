@@ -118,10 +118,10 @@ export const PaymentSelection: React.FC = () => {
                     Please send payment to the following email address:
                   </p>
                   <div className="bg-white/10 p-2 rounded flex items-center justify-between mb-3">
-                    <code className="text-amber-300 text-sm">ilsa.conference@gmail.com</code>
+                    <code className="text-amber-300 text-sm">taffdsIncPay@gmail.com</code>
                     <button 
                       onClick={() => {
-                        navigator.clipboard.writeText('ilsa.conference@gmail.com');
+                        navigator.clipboard.writeText('taffdsIncPay@gmail.com');
                         alert('Email copied to clipboard!');
                       }}
                       className="text-xs bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 px-2 py-1 rounded"
