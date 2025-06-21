@@ -2,10 +2,10 @@
  * Mapping of ticket types to their respective Paystack payment URLs
  */
 const ticketPaystackUrls: Record<string, string> = {
-  "Standard Delegate": "https://paystack.com/buy/standard-delegate-ilsa",
-  "Student Delegate": "https://paystack.com/buy/student-delegate-ilsa",
-  "MasterClass Only": "https://paystack.com/buy/masterclass-only-ilsa",
-  "Full Conference + MasterClass Combo": "https://paystack.com/buy/conference-masterclass-combo-ilsa",
+  "Standard Delegate": "https://paystack.com/buy/standard-delegate-dvsnlk",
+  "Student Delegate": "https://paystack.com/buy/student-delegates-uwphix",
+  "MasterClass Only": "https://paystack.com/buy/masterclass-only-rhhktn",
+  "Full Conference + MasterClass Combo": "https://paystack.com/buy/full-conference-qzvtar",
   "VIP Delegate": "https://paystack.com/buy/vip-delegate-gupgup"
 };
 
