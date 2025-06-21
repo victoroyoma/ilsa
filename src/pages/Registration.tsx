@@ -59,7 +59,7 @@ export const Registration: React.FC = () => {
     
     try {
       // Submit registration data to Airtable
-      const { recordId, reference } = await submitRegistration({
+      const { recordId } = await submitRegistration({
         ...formData,
         ticketType: ticketType || '',
         price: price || '',

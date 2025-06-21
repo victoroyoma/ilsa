@@ -3,7 +3,7 @@ import { Button } from '../components/Button';
 import { AlertCircleIcon, CheckIcon } from 'lucide-react';
 import { PaymentModal } from '../components/PaymentModal';
 import { useNavigate } from 'react-router-dom';
-import { getPaystackUrlForTicket } from '../utils/paystackUrls';
+
 
 interface TicketTierProps {
   name: string;

@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const AIRTABLE_API_KEY = import.meta.env.VITE_AIRTABLE_API_KEY;
-const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID;
+// Get environment variables or fallback to mock for development
+const AIRTABLE_API_KEY = import.meta.env.VITE_AIRTABLE_API_KEY || 'keyTest123456789';
+const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID || 'appTest123456789';
 const AIRTABLE_TABLE_NAME = import.meta.env.VITE_AIRTABLE_TABLE_NAME || 'Registrations';
 
 interface RegistrationData {
@@ -21,8 +22,18 @@ interface RegistrationData {
 }
 
 export const submitToAirtable = async (data: RegistrationData): Promise<string> => {
+  // Check if we're in a development environment
+  const isDevelopment = import.meta.env.DEV;
+  
   if (!AIRTABLE_API_KEY || !AIRTABLE_BASE_ID) {
     console.error('Missing Airtable configuration');
+    
+    // In development mode, return a mock ID
+    if (isDevelopment) {
+      console.warn('Development mode: Using mock Airtable response');
+      return `rec${Math.random().toString(36).substring(2, 10)}`;
+    }
+    
     throw new Error('Airtable API key or Base ID not configured. Please contact support.');
   }
 

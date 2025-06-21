@@ -32,7 +32,13 @@ export const submitRegistration = async (data: RegistrationData) => {
       });
     } catch (airtableError: any) {
       console.error('Airtable submission failed:', airtableError);
-      throw new Error(airtableError.message || 'Failed to save registration. Please try again.');
+      // If we're in development mode, still continue with a mock ID
+      if (import.meta.env.DEV) {
+        recordId = `rec${Math.random().toString(36).substring(2, 10)}`;
+        console.warn('Development mode: Using mock record ID:', recordId);
+      } else {
+        throw new Error(airtableError.message || 'Failed to save registration. Please try again.');
+      }
     }
 
     // Also save registration to Google Sheets if webhook URL is configured
