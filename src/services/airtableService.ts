@@ -5,6 +5,25 @@ const AIRTABLE_API_KEY = import.meta.env.VITE_AIRTABLE_API_KEY || 'keyTest123456
 const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID || 'appTest123456789';
 const AIRTABLE_TABLE_NAME = import.meta.env.VITE_AIRTABLE_TABLE_NAME || 'Registrations';
 
+// Map payment method values to ones accepted by Airtable
+const mapPaymentMethod = (method: string): string => {
+  // Convert to appropriate case and format for Airtable
+  switch(method.toLowerCase()) {
+    case 'paystack':
+      return 'Card Payment';
+    case 'paypal':
+      return 'PayPal';
+    case 'bank':
+    default:
+      return 'Bank Transfer';
+  }
+};
+
+// Convert boolean to "Yes"/"No" for Airtable
+const formatBoolean = (value: boolean): string => {
+  return value ? 'Yes' : 'No';
+};
+
 interface RegistrationData {
   firstName: string;
   lastName: string;
@@ -45,8 +64,8 @@ export const submitToAirtable = async (data: RegistrationData): Promise<string> 
         'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
         'Content-Type': 'application/json'
       },
-      data: {
-        fields: {          'First Name': data.firstName,
+      data: {        fields: {
+          'First Name': data.firstName,
           'Last Name': data.lastName,
           'Email': data.email,
           'Organization': data.organization || '',
@@ -54,10 +73,10 @@ export const submitToAirtable = async (data: RegistrationData): Promise<string> 
           'Country/Region': data.country,
           'Dietary Requirements': data.dietaryRequirements || '',
           'Special Assistance': data.specialAssistance || '',
-          'Requires Transport': data.requiresTransport,
+          'Requires Transport': formatBoolean(data.requiresTransport),
           'Ticket Type': data.ticketType,
           'Price': data.price,
-          'Payment Method': data.paymentMethod || '',
+          'Payment Method': mapPaymentMethod(data.paymentMethod || 'bank'),
           'Payment Status': data.paymentStatus || 'Pending'
         }
       },

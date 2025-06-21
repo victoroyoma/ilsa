@@ -50,8 +50,7 @@ export const Registration: React.FC = () => {
   };
   const handlePaymentMethodChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPaymentMethod(e.target.value);
-  };
-  const handleSubmit = async (e: React.FormEvent) => {
+  };  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isFormValid()) return;
 
