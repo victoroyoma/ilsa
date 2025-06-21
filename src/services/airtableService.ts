@@ -106,12 +106,21 @@ export const submitToAirtable = async (data: RegistrationData): Promise<string> 
   }
 };
 
-export const updatePaymentStatus = async (recordId: string, status: string): Promise<void> => {
+export const updatePaymentStatus = async (recordId: string, status: string, paymentMethod?: string): Promise<void> => {
   if (!AIRTABLE_API_KEY || !AIRTABLE_BASE_ID) {
     throw new Error('Airtable API key or Base ID not configured');
   }
 
   try {
+    const fields: Record<string, string> = {
+      'Payment Status': status
+    };
+    
+    // Add payment method if provided
+    if (paymentMethod) {
+      fields['Payment Method'] = mapPaymentMethod(paymentMethod);
+    }
+    
     await axios({
       method: 'PATCH',
       url: `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}/${recordId}`,
@@ -120,9 +129,7 @@ export const updatePaymentStatus = async (recordId: string, status: string): Pro
         'Content-Type': 'application/json'
       },
       data: {
-        fields: {
-          'Payment Status': status
-        }
+        fields: fields
       },
       timeout: 10000 // 10 second timeout
     });

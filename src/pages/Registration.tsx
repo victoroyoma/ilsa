@@ -3,9 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { ArrowLeftIcon } from 'lucide-react';
 import { submitRegistration } from '../services/registrationService';
-// Remove Paystack and PayPal service imports
-import { getPaystackUrlForTicket } from '../utils/paystackUrls';
-import { createPaypalOrder } from '../services/paypalService';
 
 interface RegistrationForm {
   firstName: string;
@@ -24,8 +21,6 @@ export const Registration: React.FC = () => {
     ticketType,
     price
   } = useParams();
-  const searchParams = new URLSearchParams(window.location.search);
-  const method = searchParams.get('method');
   const navigate = useNavigate();
   const [formData, setFormData] = useState<RegistrationForm>({
     firstName: '',
@@ -39,7 +34,6 @@ export const Registration: React.FC = () => {
     requiresTransport: false
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState(method || 'bank');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const value = e.target instanceof HTMLInputElement && e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -48,49 +42,28 @@ export const Registration: React.FC = () => {
       [e.target.name]: value
     }));
   };
-  const handlePaymentMethodChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPaymentMethod(e.target.value);
-  };  const handleSubmit = async (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isFormValid()) return;
 
     setIsSubmitting(true);
     
     try {
-      // Submit registration data to Airtable
+      // Submit registration data to Airtable (without payment method yet)
       const { recordId } = await submitRegistration({
         ...formData,
         ticketType: ticketType || '',
         price: price || '',
-        paymentMethod: paymentMethod
       });
 
-      // Store recordId in localStorage for payment verification
+      // Store recordId and email in localStorage for payment verification
       localStorage.setItem('registration_record_id', recordId);
+      localStorage.setItem('registration_email', formData.email);
       
-      // Proceed to payment based on selected method
-      const priceValue = parseFloat(price?.replace(/[^0-9.]/g, '') || '0');
+      // Redirect to payment selection page
+      navigate(`/payment-selection/${encodeURIComponent(ticketType || '')}/${encodeURIComponent(price || '')}/${recordId}`);
       
-      switch (paymentMethod) {
-        case 'paystack':
-          // Use direct Paystack URL instead of API
-          const paystackUrl = getPaystackUrlForTicket(ticketType || '');
-          if (paystackUrl) {
-            window.location.href = paystackUrl;
-          } else {
-            throw new Error('Payment link not available for this ticket type');
-          }
-          break;
-          
-        case 'paypal':
-          const description = `ILSA Conference - ${ticketType} Ticket`;
-          const paypalUrl = await createPaypalOrder(priceValue, 'ZAR', description, formData.email);
-          window.location.href = paypalUrl;
-          break;
-          
-        default: // bank transfer
-          navigate(`/checkout/bank/${encodeURIComponent(ticketType || '')}/${encodeURIComponent(price || '')}`);
-      }
     } catch (error: any) {
       console.error('Registration failed:', error);
       alert(error.message || 'Registration failed. Please try again.');
@@ -98,6 +71,7 @@ export const Registration: React.FC = () => {
       setIsSubmitting(false);
     }
   };
+
   const isFormValid = () => {
     return formData.firstName && formData.lastName && formData.email && formData.country;
   };
@@ -205,8 +179,7 @@ export const Registration: React.FC = () => {
                   Special Assistance
                 </label>
                 <textarea id="specialAssistance" name="specialAssistance" value={formData.specialAssistance} onChange={handleChange} placeholder="Let us know if you need any special assistance" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500 h-24" />
-              </div>
-              <div className="bg-white/5 rounded-lg p-4">
+              </div>              <div className="bg-white/5 rounded-lg p-4">
                 <label className="flex items-center space-x-3">
                   <input type="checkbox" name="requiresTransport" checked={formData.requiresTransport} onChange={handleChange} className="w-4 h-4 rounded border-white/10 bg-white/5 text-amber-500 focus:ring-amber-500 focus:ring-offset-0" />
                   <span className="text-white">
@@ -219,55 +192,13 @@ export const Registration: React.FC = () => {
                   </p>}
               </div>
               
-              {/* Add payment method selection */}
-              <div className="bg-white/5 rounded-lg p-4 mb-6">
-                <h3 className="text-white mb-3 font-medium">Select Payment Method</h3>
-                <div className="space-y-3">
-                  <label className="flex items-center space-x-3">
-                    <input 
-                      type="radio" 
-                      name="paymentMethod" 
-                      value="bank" 
-                      checked={paymentMethod === 'bank'} 
-                      onChange={handlePaymentMethodChange}
-                      className="w-4 h-4 text-amber-500 focus:ring-amber-500 focus:ring-offset-0"
-                    />
-                    <span className="text-white">Bank Transfer</span>
-                  </label>
-                  
-                  <label className="flex items-center space-x-3">
-                    <input 
-                      type="radio" 
-                      name="paymentMethod" 
-                      value="paystack" 
-                      checked={paymentMethod === 'paystack'} 
-                      onChange={handlePaymentMethodChange}
-                      className="w-4 h-4 text-amber-500 focus:ring-amber-500 focus:ring-offset-0"
-                    />
-                    <span className="text-white">Pay with Card (Paystack)</span>
-                  </label>
-                  
-                  <label className="flex items-center space-x-3">
-                    <input 
-                      type="radio" 
-                      name="paymentMethod" 
-                      value="paypal" 
-                      checked={paymentMethod === 'paypal'} 
-                      onChange={handlePaymentMethodChange}
-                      className="w-4 h-4 text-amber-500 focus:ring-amber-500 focus:ring-offset-0"
-                    />
-                    <span className="text-white">PayPal</span>
-                  </label>
-                </div>
-              </div>
-              
               <Button 
                 variant="primary" 
                 className="w-full" 
                 type="submit" 
                 disabled={!isFormValid() || isSubmitting}
               >
-                {isSubmitting ? 'Processing...' : 'Proceed to Payment'}
+                {isSubmitting ? 'Processing...' : 'Register Now'}
               </Button>
             </form>
           </div>

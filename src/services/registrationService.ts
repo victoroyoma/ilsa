@@ -28,7 +28,7 @@ export const submitRegistration = async (data: RegistrationData) => {
       recordId = await submitToAirtable({
         ...data,
         paymentStatus: 'Pending',
-        paymentMethod: data.paymentMethod || 'bank'
+        // Don't set payment method yet
       });
     } catch (airtableError: any) {
       console.error('Airtable submission failed:', airtableError);
@@ -88,9 +88,9 @@ export const submitRegistration = async (data: RegistrationData) => {
   }
 };
 
-export const updatePaymentInformation = async (recordId: string, status: string): Promise<void> => {
+export const updatePaymentInformation = async (recordId: string, status: string, paymentMethod?: string): Promise<void> => {
   try {
-    await updatePaymentStatus(recordId, status);
+    await updatePaymentStatus(recordId, status, paymentMethod);
   } catch (error: any) {
     console.error('Payment update error:', error);
     throw new Error(error.message || 'Failed to update payment information. Please try again later.');
