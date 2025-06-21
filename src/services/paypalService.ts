@@ -1,33 +1,3 @@
-const PAYPAL_CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID;
-const PAYPAL_CLIENT_SECRET = process.env.REACT_APP_PAYPAL_CLIENT_SECRET;
-const PAYPAL_API_URL = process.env.REACT_APP_PAYPAL_SANDBOX === 'true' 
-  ? 'https://api-m.sandbox.paypal.com' 
-  : 'https://api-m.paypal.com';
-
-// Get PayPal access token
-const getAccessToken = async (): Promise<string> => {
-  if (!PAYPAL_CLIENT_ID || !PAYPAL_CLIENT_SECRET) {
-    throw new Error('PayPal credentials not configured');
-  }
-
-  const auth = Buffer.from(`${PAYPAL_CLIENT_ID}:${PAYPAL_CLIENT_SECRET}`).toString('base64');
-  
-  const response = await fetch(`${PAYPAL_API_URL}/v1/oauth2/token`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': `Basic ${auth}`
-    },
-    body: 'grant_type=client_credentials'
-  });
-
-  const data = await response.json();
-  if (!data.access_token) {
-    throw new Error('Failed to get PayPal access token');
-  }
-
-  return data.access_token;
-};
 
 /**
  * PayPal service for creating and managing PayPal orders
