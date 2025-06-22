@@ -16,9 +16,9 @@ const partners = [{
 {
   logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332739/photo_2023-07-10_19-26-25_idvz61.jpg'
 }, {
-  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332726/download-removebg-preview_qtnfgk.png'
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/ilsapart_1_jv34y0.jpg'
 }, {
-  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332676/download__4_-removebg-preview-1_q375tj.png'
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/ilsapart_9_dqyddo.jpg'
 }, {
   logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332661/14452-removebg-preview_ttt5pw.png'
 }, {
@@ -30,6 +30,14 @@ const partners = [{
 },
 {
   logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/WhatsApp_Image_2025-06-13_at_8.20.03_AM_jafuvy.jpg'
+}, {
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/ilsapart_10_lvqbur.jpg'
+}, {
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/ilsapart_4_mkhnpa.jpg'
+}, {
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/ilsapart_5_hlfwuq.jpg'
+}, {
+  logo: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/ilsapart_6_fupub9.jpg'
 },];
 export const PartnerCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
