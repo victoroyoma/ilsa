@@ -1,4 +1,3 @@
-
 /**
  * PayPal service for creating and managing PayPal orders
  */
@@ -10,7 +9,7 @@
  * @param currency - The currency code (e.g., 'ZAR')
  * @param description - Description of the purchase
  * @param email - Customer email for reference
- * @returns Instructions page URL for manual PayPal payment
+ * @returns Direct URL to PayPal payment page
  */
 export const createPaypalOrder = async (
   amount: number, 
@@ -18,17 +17,37 @@ export const createPaypalOrder = async (
   description: string,
   email: string
 ): Promise<string> => {
-  // Get payment reference from localStorage
-  const reference = localStorage.getItem('payment_reference') || 'ILSA-Ticket';
+  // Get payment reference from localStorage or generate a new one
+  const reference = localStorage.getItem('payment_reference') || `ILSA-Ticket-${Date.now()}`;
   
-  // Store payment details in localStorage for the instructions page
-  localStorage.setItem('paypal_payment_amount', amount.toString());
-  localStorage.setItem('paypal_payment_currency', currency);
-  localStorage.setItem('paypal_payment_description', description);
-  localStorage.setItem('paypal_payment_email', email);
+  // PayPal business email (recipient)
+  const businessEmail = 'taffdsIncPay@gmail.com';
   
-  // Return URL to the PayPal instructions page
-  return `/paypal-instructions/${encodeURIComponent(reference)}`;
+  // Construct PayPal payment URL with all required parameters
+  const paypalUrl = new URL('https://www.paypal.com/cgi-bin/webscr');
+  
+  // Add required parameters
+  paypalUrl.searchParams.append('cmd', '_xclick');
+  paypalUrl.searchParams.append('business', businessEmail);
+  paypalUrl.searchParams.append('amount', amount.toString());
+  paypalUrl.searchParams.append('currency_code', currency);
+  paypalUrl.searchParams.append('item_name', description);
+  paypalUrl.searchParams.append('custom', reference);
+  
+  // Customer details
+  paypalUrl.searchParams.append('email', email);
+  
+  // Return URLs
+  const returnUrl = new URL('/payment-success?method=paypal', window.location.origin).toString();
+  const cancelUrl = new URL('/tickets', window.location.origin).toString();
+  
+  paypalUrl.searchParams.append('return', returnUrl);
+  paypalUrl.searchParams.append('cancel_return', cancelUrl);
+  
+  // Store reference for later verification
+  localStorage.setItem('payment_reference', reference);
+  
+  return paypalUrl.toString();
 };
 
 /**

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
-import { ArrowLeftIcon, CreditCardIcon, CheckIcon } from 'lucide-react';
+import { ArrowLeftIcon, CreditCardIcon } from 'lucide-react';
 import { submitRegistration } from '../services/registrationService';
 import { getPaystackUrlForTicket } from '../utils/paystackUrls';
 import { createPaypalOrder } from '../services/paypalService';
@@ -116,7 +116,7 @@ export const Registration: React.FC = () => {
       const priceValue = parseFloat(price?.replace(/[^0-9.]/g, '') || '0');
       const description = `ILSA Conference - ${ticketType} Ticket`;
       const paypalUrl = await createPaypalOrder(priceValue, 'ZAR', description, formData.email);
-      navigate(paypalUrl);
+      window.location.href = paypalUrl; // Change this line from navigate() to window.location.href
     } catch (error: any) {
       console.error('PayPal payment initialization failed:', error);
       alert(error.message || 'Failed to initialize PayPal payment. Please try again.');
@@ -282,15 +282,6 @@ export const Registration: React.FC = () => {
                 description="Make payment via PayPal. Follow instructions for manual payment."
                 onClick={handlePayPalPayment}
               />
-            </div>
-            
-            <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4 mb-8">
-              <div className="flex items-start">
-                <CheckIcon className="w-5 h-5 text-amber-400 mr-3 mt-0.5 flex-shrink-0" />
-                <p className="text-white/80 text-sm">
-                  Your registration information has been saved. You can come back and complete payment later if needed.
-                </p>
-              </div>
             </div>
           </div>
         </div>
