@@ -16,8 +16,8 @@ import { Confirmation } from './pages/Confirmation';
 import { PayPalInstructions } from './pages/PayPalInstructions';
 import { PaymentSuccess } from './pages/PaymentSuccess';
 import { Logistics } from './pages/Logistics'
+import { ContactUs } from './pages/ContactUs'
 
-// import { PaymentModalPage } from './components/PaymentModalPage';
 export function App() {
   const [activePage, setActivePage] = useState('home')
   const logoUrl = "https://res.cloudinary.com/dmqjqn6x3/image/upload/ILSA-NEW-LOGO-W_cuh2vh.png"
@@ -39,6 +39,7 @@ export function App() {
               <Route path="/speakers" element={<Speakers />} />
               <Route path="/logistics" element={<Logistics />} />
               <Route path="/tickets" element={<Tickets />} />
+              <Route path="/contact" element={<ContactUs />} />
               <Route path="/registration/:ticketType/:price" element={<Registration />} />
               
               <Route path="/payment-selection/:ticketType/:price/:recordId" element={<PaymentSelection />} />

@@ -1,9 +1,9 @@
-const PAYSTACK_SECRET_KEY = process.env.REACT_APP_PAYSTACK_SECRET_KEY;
-const PAYSTACK_PUBLIC_KEY = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY;
+const PAYSTACK_SECRET_KEY = import.meta.env.VITE_APP_PAYSTACK_SECRET_KEY;
+const PAYSTACK_PUBLIC_KEY = import.meta.env.VITE_APP_PAYSTACK_PUBLIC_KEY;
 
 export const initializePayment = async (email: string, amount: number, reference: string, metadata: any = {}) => {
   if (!PAYSTACK_SECRET_KEY) {
-    throw new Error('Environment variable REACT_APP_PAYSTACK_SECRET_KEY is not configured');
+    throw new Error('Environment variable VITE_APP_PAYSTACK_SECRET_KEY is not configured');
   }
 
   const response = await fetch('https://api.paystack.co/transaction/initialize', {
@@ -31,7 +31,7 @@ export const initializePayment = async (email: string, amount: number, reference
 
 export const verifyPayment = async (reference: string) => {
   if (!PAYSTACK_SECRET_KEY) {
-    throw new Error('Environment variable REACT_APP_PAYSTACK_SECRET_KEY is not configured');
+    throw new Error('Environment variable VITE_APP_PAYSTACK_SECRET_KEY is not configured');
   }
 
   const response = await fetch(`https://api.paystack.co/transaction/verify/${reference}`, {
@@ -48,7 +48,7 @@ export const verifyPayment = async (reference: string) => {
 // For client-side initialization (if needed)
 export const getPaystackPublicKey = () => {
   if (!PAYSTACK_PUBLIC_KEY) {
-    throw new Error('Environment variable REACT_APP_PAYSTACK_PUBLIC_KEY is not configured');
+    throw new Error('Environment variable VITE_APP_PAYSTACK_PUBLIC_KEY is not configured');
   }
   return PAYSTACK_PUBLIC_KEY;
 };
