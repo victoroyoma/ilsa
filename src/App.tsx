@@ -17,6 +17,7 @@ import { PayPalInstructions } from './pages/PayPalInstructions';
 import { PaymentSuccess } from './pages/PaymentSuccess';
 import { Logistics } from './pages/Logistics'
 import { ContactUs } from './pages/ContactUs'
+import { PaystackInstructions } from './pages/PaystackInstructions';
 
 export function App() {
   const [activePage, setActivePage] = useState('home')
@@ -49,6 +50,7 @@ export function App() {
               <Route path="/paypal-instructions/:reference" element={<PayPalInstructions />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/confirmation" element={<Confirmation />} />
+              <Route path="/paystack-instructions/:ticketType/:reference" element={<PaystackInstructions />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>

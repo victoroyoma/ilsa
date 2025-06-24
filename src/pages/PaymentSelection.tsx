@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { ArrowLeftIcon } from 'lucide-react';
-import { getPaystackUrlForTicket } from '../utils/paystackUrls';
 import { updatePaymentInformation } from '../services/registrationService';
 
 export const PaymentSelection: React.FC = () => {
@@ -33,14 +32,15 @@ export const PaymentSelection: React.FC = () => {
         return;
       }
       
-      // For Paystack, redirect to payment gateway
+      // For Paystack, go to the instructions page first
       if (paymentMethod === 'paystack') {
-        const paystackUrl = getPaystackUrlForTicket(ticketType || '');
-        if (paystackUrl) {
-          window.location.href = paystackUrl;
-        } else {
-          throw new Error('Payment link not available for this ticket type');
-        }
+        // Generate a reference
+        const reference = `ILSA-${Date.now()}`;
+        localStorage.setItem('payment_reference', reference);
+        localStorage.setItem('payment_amount', price || '');
+        
+        // Navigate to instructions page instead of direct redirect
+        navigate(`/paystack-instructions/${ticketType}/${reference}`);
       }
     } catch (error: any) {
       console.error('Payment processing error:', error);

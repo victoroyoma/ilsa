@@ -101,6 +101,11 @@ export const Registration: React.FC = () => {
     try {
       const paystackUrl = getPaystackUrlForTicket(ticketType || '');
       if (paystackUrl) {
+        // Store relevant information for tracking
+        localStorage.setItem('payment_ticket_type', ticketType || '');
+        localStorage.setItem('payment_amount', price || '');
+        
+        // Redirect directly to Paystack URL
         window.location.href = paystackUrl;
       } else {
         throw new Error('Payment link not available for this ticket type');
