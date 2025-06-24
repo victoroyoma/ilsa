@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { ArrowRightIcon } from 'lucide-react';
 import { Button } from '../components/Button';
 import { updatePaymentInformation } from '../services/registrationService';
@@ -7,7 +7,6 @@ import { getPaystackUrlForTicket } from '../utils/paystackUrls';
 
 export const PaystackInstructions: React.FC = () => {
   const { ticketType, reference } = useParams<{ ticketType: string, reference: string }>();
-  const navigate = useNavigate();
   const [processing, setProcessing] = useState(false);
 
   // Get stored information
