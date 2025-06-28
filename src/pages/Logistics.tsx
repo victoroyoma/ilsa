@@ -38,7 +38,7 @@ export const Logistics: React.FC = () => {
                 <p className="text-white/70">{service.description}</p>
               </div>)}
           </div>
-          <div className="bg-gradient-to-r from-amber-500/20 to-amber-500/10 rounded-xl p-8 border border-amber-500/30">
+          <div className="bg-gradient-to-r from-amber-500/20 to-amber-500/10 rounded-xl p-8 border border-amber-500/30 mb-8">
             <h2 className="text-2xl font-bold text-white mb-4">
               Book Your Transport
             </h2>
@@ -50,6 +50,30 @@ export const Logistics: React.FC = () => {
             <Button variant="primary" onClick={() => window.open('https://syavayagroup.co.za/shuttles-and-chauffeur/', '_blank')}>
               Book Discounted Transport
             </Button>
+          </div>
+
+          <div className="bg-gradient-to-r from-blue-500/20 to-blue-500/10 rounded-xl p-8 border border-blue-500/30">
+            <h2 className="text-2xl font-bold text-white mb-4">
+              Book Your Accommodation
+            </h2>
+            <p className="text-white/70 mb-6">
+              Stay at the stunning Sun Sibaya Hotel where the conference takes place. 
+               Book directly with Sun Sibaya Hotel for the best prices and guaranteed availability.
+            </p>
+            <div className="flex flex-col md:flex-row gap-4">
+              <Button 
+                variant="primary" 
+                onClick={() => window.open('https://suninternational.profitroom.com/en/suninternationalgroupaccount/locations?currency=ZAR&_gl=1%2A1aqz42v%2A_ga%2AMTI5NjQwMzQ0MC4xNzUxMDg3ODI1%2A_ga_P3GHN2QWH8%2AczE3NTEwODc4MjUkbzEkZzEkdDE3NTEwODg4MDEkajM5JGwwJGgxNzM5ODI1ODA3.', '_blank')}
+              >
+                Book Hotel Room
+              </Button>
+              <Button 
+                variant="secondary" 
+                onClick={() => window.open('https://suninternational.com/sun-sibaya/', '_blank')}
+              >
+                View Hotel Details
+              </Button>
+            </div>
           </div>
         </div>
       </div>

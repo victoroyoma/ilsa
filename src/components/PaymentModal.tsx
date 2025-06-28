@@ -20,10 +20,10 @@ const paymentOptions: PaymentOption[] = [{
   description: 'Pay securely with card via Paystack',
   icon: 'https://website-v3-assets.s3.amazonaws.com/assets/img/hero/Paystack-mark-white-twitter.png'
 }, {
-  id: 'bank',
-  name: 'Bank Transfer',
-  description: 'Manual bank transfer to our account',
-  icon: '/bank-icon.png'
+  id: 'eft',
+  name: 'Electronic Fund Transfer (EFT)',
+  description: 'Direct bank transfer via EFT',
+  icon: '/eft-icon.png'
 }];
 export const PaymentModal: React.FC<PaymentModalProps> = ({
   isOpen,
@@ -43,8 +43,8 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
         // Fallback to registration page if no direct URL exists
         navigate(`/registration/${ticketType}/${price}?method=paystack`);
       }
-    } else {
-      navigate(`/registration/${ticketType}/${price}?method=bank`);
+    } else if (optionId === 'eft') {
+      navigate(`/registration/${ticketType}/${price}?method=eft`);
     }
   };
   if (!isOpen) return null;

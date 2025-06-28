@@ -18,13 +18,17 @@ export const PaymentSuccess: React.FC = () => {
             <CheckCircleIcon className="w-16 h-16 mx-auto text-green-500 mb-4" />
             <h2 className="text-xl font-bold text-white mb-2">Payment Submitted!</h2>
             
-            {method === 'paypal' ? (
+            {method === 'eft' ? (
               <p className="text-white/70 mb-6">
-                Thank you for your PayPal payment. Our team will verify your payment and send you a confirmation email.
+                Thank you for your EFT transfer. Our team will verify your payment and send you a confirmation email within 24 hours.
+              </p>
+            ) : method === 'paystack' ? (
+              <p className="text-white/70 mb-6">
+                Your payment has been processed successfully. You will receive a confirmation email shortly.
               </p>
             ) : (
               <p className="text-white/70 mb-6">
-                Your payment has been processed successfully. You will receive a confirmation email shortly.
+                Your payment has been submitted successfully. You will receive a confirmation email shortly.
               </p>
             )}
             

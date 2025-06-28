@@ -11,8 +11,8 @@ const mapPaymentMethod = (method: string): string => {
   switch(method.toLowerCase()) {
     case 'paystack':
       return 'Card Payment';
-    case 'paypal':
-      return 'PayPal';
+    case 'eft':
+      return 'EFT Transfer';
     case 'bank':
     default:
       return 'Bank Transfer';

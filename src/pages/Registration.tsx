@@ -4,7 +4,6 @@ import { Button } from '../components/Button';
 import { ArrowLeftIcon, CreditCardIcon } from 'lucide-react';
 import { submitRegistration } from '../services/registrationService';
 import { getPaystackUrlForTicket } from '../utils/paystackUrls';
-import { createPaypalOrder } from '../services/paypalService';
 
 interface RegistrationForm {
   firstName: string;
@@ -116,15 +115,23 @@ export const Registration: React.FC = () => {
     }
   };
 
-  const handlePayPalPayment = async () => {
+  const handleEFTPayment = async () => {
     try {
-      const priceValue = parseFloat(price?.replace(/[^0-9.]/g, '') || '0');
-      const description = `ILSA Conference - ${ticketType} Ticket`;
-      const paypalUrl = await createPaypalOrder(priceValue, 'ZAR', description, formData.email);
-      window.location.href = paypalUrl; // Change this line from navigate() to window.location.href
+      // Store payment information for EFT processing
+      localStorage.setItem('payment_ticket_type', ticketType || '');
+      localStorage.setItem('payment_amount', price || '');
+      localStorage.setItem('payment_method', 'eft');
+      
+      // Navigate to EFT instructions page
+      const recordId = localStorage.getItem('registration_record_id');
+      if (recordId) {
+        navigate(`/eft-instructions/${encodeURIComponent(ticketType || '')}/${encodeURIComponent(price || '')}`);
+      } else {
+        throw new Error('Registration information not found');
+      }
     } catch (error: any) {
-      console.error('PayPal payment initialization failed:', error);
-      alert(error.message || 'Failed to initialize PayPal payment. Please try again.');
+      console.error('EFT payment initialization failed:', error);
+      alert(error.message || 'Failed to initialize EFT payment. Please try again.');
     }
   };
 
@@ -281,11 +288,11 @@ export const Registration: React.FC = () => {
               
               <PaymentOption 
                 icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                  <path d="M7.076 21.337H2.47a.5.5 0 0 1-.5-.5v-7.178c0-.13.106-.234.236-.234h5.146c.276 0 .5.224.5.5v7.178c0 .13-.106.234-.236.234h-.54zm-3.87-3.283c-.36 0-.65.29-.65.65 0 .36.29.65.65.65.36 0 .65-.29.65-.65 0-.36-.29-.65-.65-.65zm0-2.618c-.36 0-.65.29-.65.65 0 .36.29.65.65.65.36 0 .65-.29.65-.65 0-.36-.29-.65-.65-.65zm9.845-2.783L10.665 7.34H8.49a.5.5 0 0 0-.5.5v2.524c0 .13.106.236.236.236h1.656L8.76 13.113h2.266a.5.5 0 0 0 .5-.5v-2.422c0-.13-.106-.236-.236-.236h-1.656l1.277-2.54h2.14zm4.319-1.673v-2.2a.5.5 0 0 0-.5-.5h-1.776v4.78l-1.213-4.78h-1.937a.5.5 0 0 0-.5.5v2.2c0 .13.106.234.236.234h1.775V6.025l1.213 4.78h1.938a.5.5 0 0 0 .5-.5V8.105a.236.236 0 0 0-.236-.234h-1.77v-4.78h3.27zM21.53 21.337h-4.606a.236.236 0 0 1-.236-.234v-7.178a.5.5 0 0 1 .5-.5h5.146c.13 0 .236.106.236.234v7.178a.5.5 0 0 1-.5.5h-.54zm-3.87-3.283c-.36 0-.65.29-.65.65 0 .36.29.65.65.65.36 0 .65-.29.65-.65 0-.36-.29-.65-.65-.65zm0-2.618c-.36 0-.65.29-.65.65 0 .36.29.65.65.65.36 0 .65-.29.65-.65 0-.36-.29-.65-.65-.65z" />
+                  <path d="M2 4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4zm1 2h18V5H3v1zm18 4H3a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1zm-1 4H4v-2h16v2zm-9-7v2H9V7h2zm6 0v2h-2V7h2zm3 8v2h-2v-2h2zm-6 0v2H9v-2h2z"/>
                 </svg>}
-                title="Pay with PayPal"
-                description="Make payment via PayPal. Follow instructions for manual payment."
-                onClick={handlePayPalPayment}
+                title="Electronic Fund Transfer (EFT)"
+                description="Direct bank transfer via EFT. Fast and secure."
+                onClick={handleEFTPayment}
               />
             </div>
           </div>

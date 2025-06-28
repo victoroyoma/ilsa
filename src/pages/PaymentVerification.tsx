@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Loader2Icon, CheckCircleIcon, XCircleIcon } from 'lucide-react';
 import { verifyPayment } from '../services/paystackService';
-import { capturePaypalPayment } from '../services/paypalService';
 import { updatePaymentInformation } from '../services/registrationService';
 import { Button } from '../components/Button';
 
@@ -37,21 +36,11 @@ export const PaymentVerification: React.FC = () => {
           } else {
             throw new Error(verificationResult.message || 'Payment verification failed');
           }
-        } else if (method === 'paypal') {
-          const orderId = searchParams.get('token');
-          if (!orderId) {
-            throw new Error('PayPal order ID not found');
-          }
-
-          const captureResult = await capturePaypalPayment(orderId);
-          
-          if (captureResult.status === 'COMPLETED') {
-            await updatePaymentInformation(recordId, 'Paid');
-            setStatus('success');
-            setMessage('Payment successful! Your registration is complete.');
-          } else {
-            throw new Error('PayPal payment capture failed');
-          }
+        } else if (method === 'eft') {
+          // For EFT, the payment is manually verified by admin
+          // This is typically reached when user returns from EFT instructions
+          setStatus('success');
+          setMessage('EFT transfer submitted! We will verify your payment and confirm within 24 hours.');
         }
       } catch (error: any) {
         console.error('Payment verification error:', error);

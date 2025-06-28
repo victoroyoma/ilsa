@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MenuIcon, XIcon } from 'lucide-react';
+import { DonationModal } from './DonationModal';
 interface NavbarProps {
   activePage: string;
   setActivePage: (page: string) => void;
@@ -18,6 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -66,6 +68,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               {link.name}
               {activePage === link.id && <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-amber-500 rounded-full"></span>}
             </Link>)}
+          
+          {/* Donate Button */}
+          <button
+            onClick={() => setIsDonationModalOpen(true)}
+            className="ml-4 px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            Donate
+          </button>
         </div>
         {/* Mobile menu button */}
         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden text-white">
@@ -81,7 +91,24 @@ export const Navbar: React.FC<NavbarProps> = ({
         }} className={`py-2 px-4 rounded-md transition-colors duration-200 ${activePage === link.id ? 'bg-amber-500/10 text-amber-400' : 'text-white/80 hover:bg-white/5 hover:text-white'}`}>
                 {link.name}
               </Link>)}
+            
+            {/* Mobile Donate Button */}
+            <button
+              onClick={() => {
+                setIsDonationModalOpen(true);
+                setIsMobileMenuOpen(false);
+              }}
+              className="py-2 px-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-semibold rounded-lg transition-all duration-300 text-center"
+            >
+              Donate
+            </button>
           </div>
         </div>}
+    
+      {/* Donation Modal */}
+      <DonationModal 
+        isOpen={isDonationModalOpen} 
+        onClose={() => setIsDonationModalOpen(false)} 
+      />
     </nav>;
 };

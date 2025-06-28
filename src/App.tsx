@@ -13,7 +13,7 @@ import { PaymentSelection } from './pages/PaymentSelection';
 import { PaymentVerification } from './pages/PaymentVerification';
 import { BankTransfer } from './pages/BankTransfer';
 import { Confirmation } from './pages/Confirmation';
-import { PayPalInstructions } from './pages/PayPalInstructions';
+import { EFTInstructions } from './pages/EFTInstructions';
 import { PaymentSuccess } from './pages/PaymentSuccess';
 import { Logistics } from './pages/Logistics'
 import { ContactUs } from './pages/ContactUs'
@@ -47,7 +47,7 @@ export function App() {
               <Route path="/checkout/:method?/:ticketType/:price" element={<Checkout />} />
               <Route path="/payment/verify" element={<PaymentVerification />} />
               <Route path="/checkout/bank/:ticketType/:price" element={<BankTransfer />} />
-              <Route path="/paypal-instructions/:reference" element={<PayPalInstructions />} />
+              <Route path="/eft-instructions/:ticketType/:price" element={<EFTInstructions />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/confirmation" element={<Confirmation />} />
               <Route path="/paystack-instructions/:ticketType/:reference" element={<PaystackInstructions />} />
