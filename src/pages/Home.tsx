@@ -152,7 +152,7 @@ export const Home: React.FC = () => {
             </p>
             <div className="mt-6">
               <a
-                href="https://suninternational.profitroom.com/en/suninternationalgroupaccount/locations?currency=ZAR&_gl=1%2A1aqz42v%2A_ga%2AMTI5NjQwMzQ0MC4xNzUxMDg3ODI1%2A_ga_P3GHN2QWH8%2AczE3NTEwODc4MjUkbzEkZzEkdDE3NTEwODg4MDEkajM5JGwwJGgxNzM5ODI1ODA3"
+                href="https://www.suninternational.com/sibaya/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-lg transition-colors duration-300"
