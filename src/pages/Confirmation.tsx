@@ -21,7 +21,7 @@ export const Confirmation: React.FC = () => {
             </h1>
             
             <p className="text-white/70 mb-8 max-w-lg mx-auto">
-              Thank you for registering for the International Longevity Summit Africa 2025. 
+              Thank you for registering for the International Longevity Summit Africa 2026. 
               {email && <span> We have sent a confirmation email to <span className="text-amber-400">{email}</span>.</span>}
             </p>
             

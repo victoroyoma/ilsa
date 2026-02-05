@@ -126,7 +126,7 @@ export const EFTInstructions: React.FC = () => {
               <div className="mb-6">
                 <label className="block text-white/60 text-sm mb-1">Description</label>
                 <div className="bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white">
-                  ILSA 2025 Conference - {ticketType}
+                  ILSA 2026 Conference - {ticketType}
                 </div>
               </div>
             </div>

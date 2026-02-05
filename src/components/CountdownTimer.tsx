@@ -13,8 +13,8 @@ export const CountdownTimer: React.FC = () => {
     seconds: 0
   });
   useEffect(() => {
-    // Set the date for September 10, 2025
-    const summitDate = new Date('September 10, 2025 00:00:00').getTime();
+    // Set the date for August 13, 2026
+    const summitDate = new Date('August 13, 2026 00:00:00').getTime();
     const timer = setInterval(() => {
       const now = new Date().getTime();
       const distance = summitDate - now;
@@ -46,7 +46,7 @@ export const CountdownTimer: React.FC = () => {
   }];
   return <div className="flex flex-col items-center">
       <h3 className="text-amber-400 text-lg mb-4 font-semibold tracking-wider">
-        Countdown to ILSA 2025
+        Countdown to ILSA 2026
       </h3>
       <div className="flex flex-wrap justify-center gap-4">
         {timeUnits.map(unit => <div key={unit.label} className="flex flex-col items-center">

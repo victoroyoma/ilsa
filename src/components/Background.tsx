@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-// Cloudinary images for ILSA 2025 
+// Cloudinary images for ILSA 2026 
 const images = [
   'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332680/IMG_7604-scaled_idxrlg.jpg',
   'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1749332685/IMG_7992-scaled_ovyl6b.jpg',

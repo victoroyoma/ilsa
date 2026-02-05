@@ -34,7 +34,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
           <div className="flex justify-between items-center mb-6">
             <div className="flex items-center">
               <HeartIcon className="w-6 h-6 text-amber-400 mr-2" />
-              <h3 className="text-xl font-bold text-white">Support ILSA 2025</h3>
+              <h3 className="text-xl font-bold text-white">Support ILSA 2026</h3>
             </div>
             <button onClick={onClose} className="text-white/60 hover:text-white transition-colors">
               <XIcon size={24} />

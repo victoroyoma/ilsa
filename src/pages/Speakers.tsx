@@ -104,7 +104,7 @@ export const Speakers: React.FC = () => {
   const pdfUrl = "https://drive.google.com/file/d/1awdNrheBcPeR2hDFxZerrieBjIDqJJcf/view?usp=sharing";
   const link = document.createElement("a");
   link.href = pdfUrl;
-  link.download = "ILSA_2025_CFA1.pdf";
+  link.download = "ILSA_2026_CFA1.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -152,7 +152,7 @@ export const Speakers: React.FC = () => {
           </h2>
           <p className="text-white/70 mb-6">
             We invite researchers, scientists, and innovators to submit
-            abstracts for consideration at ILSA 2025. Selected abstracts will be
+            abstracts for consideration at ILSA 2026. Selected abstracts will be
             featured in our Innovation & Research Showcases.
           </p>
 

@@ -63,7 +63,7 @@ export const submitRegistration = async (data: RegistrationData) => {
     
     // Create WhatsApp notification message but don't open it automatically
     const message = encodeURIComponent(
-      `*New ILSA 2025 Registration*\n\n` +
+      `*New ILSA 2026 Registration*\n\n` +
       `Name: ${data.firstName} ${data.lastName}\n` +
       `Email: ${data.email}\n` +
       `Ticket: ${data.ticketType}\n` +

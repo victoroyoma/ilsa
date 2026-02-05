@@ -59,24 +59,29 @@ export const Home: React.FC = () => {
       </div>
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fadeIn">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 animate-fadeIn">
             International Longevity Summit Africa
-            <span className="text-amber-400 block mt-2">ILSA 2025</span>
+            <span className="text-amber-400 block mt-2">ILSA 2026</span>
           </h1>
+          <p className="text-xl md:text-2xl font-semibold text-amber-300 mb-6">
+            From Biology to Society: Advancing Healthy Aging in Africa
+          </p>
           <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-8 text-white/80">
             <div className="flex items-center">
               <CalendarIcon className="w-5 h-5 text-amber-400 mr-2" />
-              <span>September 10–11, 2025</span>
+              <span>13–15 August 2026</span>
             </div>
             <div className="flex items-center">
               <MapPinIcon className="w-5 h-5 text-amber-400 mr-2" />
-              <span>Sun Sibaya Hotel, Durban, South Africa</span>
+              <span>Shaggar Institute of Technology, Addis Ababa, Ethiopia</span>
             </div>
           </div>
-          <div ref={taglineRef} className="text-xl md:text-2xl font-semibold text-white/90 mb-10 h-20 md:h-16 flex items-center justify-center"></div>
-          <p className="text-white/70 mb-10 max-w-2xl mx-auto">
-            Join us for an in-person summit focused on real-time collaboration
-            and innovation in longevity science.
+          <div ref={taglineRef} className="text-lg md:text-xl font-medium text-white/90 mb-8 h-12 flex items-center justify-center"></div>
+          <p className="text-white/70 mb-6 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
+            Africa is undergoing a profound demographic and health transition. ILSA 2026 convenes African and global leaders across biology, medicine, technology, policy, ethics, and innovation to advance a shared goal: building systems that support healthy, dignified living across the African lifespan.
+          </p>
+          <p className="text-white/60 mb-10 max-w-2xl mx-auto text-sm md:text-base">
+            Organised by Afrolongevity & Shaggar Institute of Technology
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <Button variant="primary" to="/tickets">
@@ -95,25 +100,54 @@ export const Home: React.FC = () => {
         <CountdownTimer />
       </div>
     </section>
-    {/* Event Structure Section */}
+    {/* Global Alignment Section */}
+    <section className="py-20 bg-black/30 backdrop-blur-sm">
+      <div className="container mx-auto px-4 md:px-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-white">
+          Global & Continental <span className="text-amber-400">Alignment</span>
+        </h2>
+        <div className="max-w-4xl mx-auto">
+          <p className="text-white/80 mb-6 text-center">
+            In 2020, the World Health Organization declared 2020–2030 the <strong className="text-amber-400">Decade of Healthy Aging</strong>, calling on governments and institutions worldwide to redesign health systems around functional ability, prevention, and quality of life.
+          </p>
+          <p className="text-white/70 text-center mb-8">
+            ILSA exists to translate these global and continental frameworks into African-owned platforms, dialogue, and action, positioning the continent not as a passive recipient of global aging agendas, but as an active architect of the future of longevity science and healthy aging policy.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Programme Structure Section */}
     <section className="py-20">
       <div className="container mx-auto px-4 md:px-8">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-white">
-          Summit <span className="text-amber-400">Structure</span>
+          Programme <span className="text-amber-400">Structure</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[{
-            title: 'Masterclasses',
-            description: 'Equip and challenge participants with cutting-edge knowledge and practical skills in longevity science.',
-            icon: '🧠'
-          }, {
             title: 'Keynote Addresses',
-            description: 'Inspire and guide  the Future of leadership in  the global longevity research and innovation',
-            icon: '🌟'
+            description: 'High-level presentations from global and African leaders in longevity science, policy, and innovation.',
+            icon: '🎤'
           }, {
-            title: 'Innovation & Research Showcases',
-            description: 'Redefine possibilities in health, aging, and science through groundbreaking African innovations.',
+            title: 'Scientific & Policy Sessions',
+            description: 'Plenary sessions addressing biology of aging, clinical practice, and policy implementation.',
+            icon: '🧬'
+          }, {
+            title: 'Thematic Panels',
+            description: 'Technical discussions on biotechnology, healthtech, ethics, and innovation ecosystems.',
+            icon: '💡'
+          }, {
+            title: 'Research Showcases',
+            description: 'Platform for presenting cutting-edge research and innovations in healthy aging.',
             icon: '🔬'
+          }, {
+            title: 'Policy Roundtables',
+            description: 'Implementation-focused discussions with policymakers, regulators, and development partners.',
+            icon: '🏛️'
+          }, {
+            title: 'Networking Sessions',
+            description: 'Partnership-building opportunities across academia, industry, healthcare, and government.',
+            icon: '🤝'
           }].map((phase, index) => <div key={index} ref={el => phaseRefs.current[index] = el} className="bg-gradient-to-b from-blue-900/20 to-black/40 backdrop-blur-sm rounded-xl p-8 border border-white/10 transition-all duration-700 opacity-0 translate-y-10" style={{
             transitionDelay: `${index * 200}ms`
           }}>
@@ -126,129 +160,83 @@ export const Home: React.FC = () => {
         </div>
       </div>
     </section>
-    {/* Location Map Section */}
+    {/* Venue Section */}
     <section className="py-16">
       <div className="container mx-auto px-4 md:px-8">
         <h2 className="text-3xl font-bold text-center mb-8 text-white">
-          <span className="text-amber-400">Venue</span> Location
+          <span className="text-amber-400">Venue</span> & Location
         </h2>
         <div className="bg-gradient-to-b from-blue-900/20 to-black/40 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10">
           <div className="aspect-video w-full">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3466.289978079268!2d31.09707147553996!3d-29.682371425107934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef70f97c85e48b7%3A0x8ee3d0f199db339f!2sSibaya%20Casino%20%26%20Entertainment%20Kingdom!5e0!3m2!1sen!2sng!4v1750581738765!5m2!1sen!2sng" width="600" height="450" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.3969744524726!2d38.7577606!3d9.0247685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cf0e1cd1f5%3A0x9dcd91fe1db93f77!2sAddis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2s!4v1234567890" width="600" height="450" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           </div>
           <div className="p-6">
             <h3 className="text-xl font-bold text-white mb-2">
-              Sun Sibaya Hotel
+              Shaggar Institute of Technology
             </h3>
-            <p className="text-white/70">
-              Durban, KwaZulu-Natal, South Africa
-              <br />
-              10 minutes from King Shaka International Airport. <br />
-              <b>Discounted Shuttle service available at the airport for registered delegates</b>
+            <p className="text-white/70 mb-4">
+              Addis Ababa, Ethiopia
             </p>
-            <p className="text-white/70 mt-4">
-              Paid registered attendees should book their hotel accommodation at the Sun Sibaya Hotel, which is the official venue for ILSA 2025.
-              <br />
-            </p>
-            <div className="mt-6">
-              <a
-                href="https://www.suninternational.com/sibaya/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-lg transition-colors duration-300"
-              >
-                Book Hotel Accommodation
-              </a>
+            <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 mb-6">
+              <h4 className="text-amber-400 font-semibold mb-2">Why Addis Ababa?</h4>
+              <p className="text-white/70 text-sm">
+                Addis Ababa is Africa's diplomatic and policy capital, hosting the African Union, the United Nations Economic Commission for Africa, and numerous continental and international institutions. By convening ILSA 2026 here, the summit situates healthy aging discussions at the intersection of science, policy, and continental decision-making.
+              </p>
             </div>
+            <p className="text-white/60 text-sm mb-6">
+              Detailed information on accommodation, transport, and travel guidance will be provided to registered participants.
+            </p>
           </div>
-        </div>
-        <div className="grid grid-cols-3 gap-4 mt-8">
-          {[
-            {
-              src: "https://res.cloudinary.com/dmqjqn6x3/image/upload/WhatsApp_Image_2025-06-13_at_6.43.23_PM_l38hae.jpg",
-              alt: "Hotel Exterior"
-            },
-            {
-              src: "https://res.cloudinary.com/dmqjqn6x3/image/upload/WhatsApp_Image_2025-06-13_at_6.44.59_PM_wxe8yo.jpg",
-              alt: "Hotel Lobby"
-            },
-            {
-              src: "https://res.cloudinary.com/dmqjqn6x3/image/upload/WhatsApp_Image_2025-06-13_at_6.48.29_PM_cap7yi.jpg",
-              alt: "Hotel Room"
-            }
-          ].map((image, index) => (
-            <div key={index} className="bg-gradient-to-b from-blue-900/20 to-black/40 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10">
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full aspect-video object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          ))}
-          <h1>Luxury Accommodation</h1>
-          <p>Experience world-class hospitality with stunning ocean views and modern amenities at the prestigious Sun Sibaya Hotel.</p>
         </div>
       </div>
     </section>
-    {/* Post Event Tours Section */}
+    {/* Who Should Attend Section */}
     <section className="py-16 bg-black/30 backdrop-blur-sm">
       <div className="container mx-auto px-4 md:px-8">
         <h2 className="text-3xl font-bold text-center mb-12 text-white">
-          Post Event <span className="text-amber-400">Tours</span>
+          Who Should <span className="text-amber-400">Attend</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[{
-            title: 'Hluhluwe–Imfolozi Safari',
-            image: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?auto=format&fit=crop&w=800&q=80',
-            description: "Experience Africa's oldest game reserve, home to the Big Five and successful rhino conservation programs.",
-            duration: ''
+            title: 'Researchers & Clinicians',
+            description: 'Biomedical, clinical, and public health researchers working on aging, longevity medicine, and healthcare professionals',
+            icon: '🔬'
           }, {
-            title: 'Drakensberg Mountains',
-            image: 'https://www.nature-reserve.co.za/images/drakensberg-mountain-hampton-01-590x390.jpg',
-            description: 'Explore UNESCO World Heritage sites featuring ancient rock art and breathtaking mountain landscapes.',
-            duration: ''
+            title: 'Innovators & Industry',
+            description: 'HealthTech, BioTech, AgeTech innovators, pharmaceutical professionals, and wellness industry leaders',
+            icon: '💡'
           }, {
-            title: 'Durban Cultural Tour',
-            image: 'https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/06/e4/a8/17.jpg',
-            description: 'Discover rich Zulu heritage, Indian influences, and colonial history in vibrant markets and museums.',
-            duration: ''
-          }].map((tour, index) => <div key={index} className="bg-gradient-to-b from-blue-900/20 to-black/40 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 group hover:border-amber-500/30 transition-all duration-300">
-            <div className="relative">
-              <img src={tour.image} alt={tour.title} className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300" />
-              <div className="absolute top-4 right-4 bg-amber-500 text-black px-3 py-1 rounded-full text-sm font-semibold">
-                {tour.duration}
-              </div>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-white mb-2">
-                {tour.title}
-              </h3>
-              <p className="text-white/70 mb-4">{tour.description}</p>
-              <button className="text-amber-400 hover:text-amber-300 font-semibold transition-colors duration-300">
-                Learn More →
-              </button>
-            </div>
+            title: 'Policy & Academia',
+            description: 'Policymakers, regulators, development partners, academic leaders, educators, and investors',
+            icon: '🎓'
+          }].map((audience, index) => <div key={index} className="bg-gradient-to-b from-blue-900/20 to-black/40 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-amber-500/30 transition-all duration-300">
+            <div className="text-4xl mb-4">{audience.icon}</div>
+            <h3 className="text-xl font-bold text-white mb-4">
+              {audience.title}
+            </h3>
+            <p className="text-white/70">{audience.description}</p>
           </div>)}
         </div>
-        <div className="text-center mt-8">
-          <p className="text-white/60">
-            Custom tours and extended packages available upon request. Contact
-            our travel desk for more information.
+        <div className="text-center mt-12">
+          <p className="text-white/80 text-lg mb-4">
+            ILSA 2026 convenes a multidisciplinary and influence-oriented audience committed to advancing healthy aging across Africa.
           </p>
         </div>
       </div>
     </section>
     {/* Partners & Sponsors Section */}
-    <section className="py-20 bg-black/30 backdrop-blur-sm">
+    <section className="py-20">
       <div className="container mx-auto px-4 md:px-8">
         <h2 className="text-3xl font-bold text-center mb-12 text-white">
-          Our <span className="text-amber-400">Previous Partners and Current Partners</span>
+          Our <span className="text-amber-400">Partners</span>
         </h2>
         <PartnerCarousel />
         <div className="mt-8 text-center">
+          <p className="text-white/60 text-sm mb-2">
+            ILSA 2026 is delivered through a strategic collaboration between Afrolongevity and Shaggar Institute of Technology
+          </p>
           <p className="text-white/60 text-sm">
-            Interested in becoming an ILSA2025 partner? Contact us at
-            afrolongevity@taffds.org
+            Interested in becoming an ILSA 2026 partner? Contact us at afrolongevity@taffds.org
           </p>
         </div>
       </div>

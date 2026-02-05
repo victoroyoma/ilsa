@@ -5,21 +5,29 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <div className="text-amber-500 font-bold text-xl tracking-tight mb-2">
-              ILSA<span className="text-white">2025</span>
+              ILSA<span className="text-white">2026</span>
             </div>
             <p className="text-white/60 text-sm max-w-md">
-              International Longevity Summit Africa 2025
+              International Longevity Summit Africa 2026
               <br />
-              Sun Sibaya Hotel, Durban, KwaZulu-Natal, South Africa
+              Shaggar Institute of Technology, Addis Ababa, Ethiopia
+              <br />
+              13–15 August 2026
             </p>
           </div>
           <div className="text-center md:text-right">
-            <h4 className="text-white font-medium mb-2">With thanks to:</h4>
+            <h4 className="text-white font-medium mb-2">Organised by:</h4>
             <div className="text-white/60 text-sm">
-              <p>TAFFD's</p>
               <p>Afrolongevity</p>
-              <p>South African Tourism Board</p>
-              <p>KwaZulu-Natal Convention Bureau</p>
+              <p>Shaggar Institute of Technology</p>
+            </div>
+            <div className="mt-4">
+              <h4 className="text-white font-medium mb-2">Contact:</h4>
+              <div className="text-white/60 text-sm">
+                <p>afrolongevity@taffds.org</p>
+                <p>+27 71 053 3436</p>
+                <p>WhatsApp: +27 63 656 8545</p>
+              </div>
             </div>
           </div>
         </div>

@@ -73,7 +73,7 @@ export const Checkout: React.FC = () => {
 
       // WhatsApp message with better formatting
       const message = encodeURIComponent(
-        `*ILSA 2025 Payment Submission*\n\n` +
+        `*ILSA 2026 Payment Submission*\n\n` +
         `Ticket Type: ${ticketType}\n` +
         `Amount: R${price} ZAR\n` +
         `Payment Method: ${method}\n\n` +

@@ -56,7 +56,7 @@ export const ContactUs: React.FC = () => {
             Get in <span className="text-amber-400">Touch</span>
           </h1>
           <p className="text-white/70 mb-8 max-w-2xl mx-auto">
-            Have questions about the International Longevity Summit Africa 2025? 
+            Have questions about the International Longevity Summit Africa 2026? 
             Our team is here to help. Reach out to us directly or use the form below.
           </p>
         </div>

@@ -58,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <Link to="/" onClick={() => setActivePage('home')} className="flex items-center space-x-2">
           <img 
             src={logoUrl} 
-            alt="ILSA 2025" 
+            alt="ILSA 2026" 
             className="h-12 w-auto"
           />
         </Link>

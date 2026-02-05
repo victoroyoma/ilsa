@@ -73,7 +73,7 @@ export const Tickets: React.FC = () => {
         </h1>
         <p className="text-white/70 mb-8 max-w-2xl mx-auto">
           Join visionary leaders, researchers, and innovators at the
-          International Longevity Summit Africa 2025 for an immersive
+          International Longevity Summit Africa 2026 for an immersive
           in-person experience that will shape the future of longevity
           science.
         </p>
