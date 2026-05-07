@@ -6,6 +6,7 @@ interface SpeakerProps {
   organization: string;
   linkedInUrl?: string;
   imageUrl: string;
+  imagePosition?: string;
 }
 
 export const SpeakerCard: React.FC<SpeakerProps> = ({
@@ -13,24 +14,25 @@ export const SpeakerCard: React.FC<SpeakerProps> = ({
   title,
   organization,
   linkedInUrl = '#',
-  imageUrl
+  imageUrl,
+  imagePosition = 'object-center'
 }) => {
   return (
-    <div className="h-[400px] w-full perspective-1000 group hover:scale-105 transition-transform duration-300">
+    <div className="h-[450px] w-full perspective-1000 group hover:scale-105 transition-transform duration-300">
       <div className="relative w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-900/40 to-black/60 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 shadow-xl">
           <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 via-transparent to-blue-500/10"></div>
           
           {/* Modified image container */}
-          <div className="mx-4 mt-4 h-[200px] overflow-hidden rounded-lg border border-white/20">
+          <div className="mx-4 mt-4 h-[260px] overflow-hidden rounded-lg border border-white/20">
             <img
               src={imageUrl}
               alt={name}
-              className="w-full h-full object-cover object-center"
+              className={`w-full h-full object-cover ${imagePosition}`}
             />
           </div>
           
-          <div className="p-6 flex flex-col justify-between flex-1">
+          <div className="px-4 pt-3 pb-4 flex flex-col justify-between flex-1">
             <div>
               <h3 className="text-xl font-bold text-white mb-1 group-hover:text-amber-400 transition-colors">{name}</h3>
               <p className="text-amber-400 font-medium mb-2">{title}</p>

@@ -161,33 +161,170 @@ export const Home: React.FC = () => {
       </div>
     </section>
     {/* Venue Section */}
-    <section className="py-16">
-      <div className="container mx-auto px-4 md:px-8">
-        <h2 className="text-3xl font-bold text-center mb-8 text-white">
+    <section className="py-16 relative overflow-hidden">
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('https://res.cloudinary.com/dmqjqn6x3/image/upload/v1778178788/afrobg1_mcq2yf.jpg')" }}
+      />
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+
+      <div className="relative z-10 container mx-auto px-4 md:px-8">
+        <h2 className="text-3xl font-bold text-center mb-10 text-white">
           <span className="text-amber-400">Venue</span> & Location
         </h2>
-        <div className="bg-gradient-to-b from-blue-900/20 to-black/40 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10">
-          <div className="aspect-video w-full">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.3969744524726!2d38.7577606!3d9.0247685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cf0e1cd1f5%3A0x9dcd91fe1db93f77!2sAddis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2s!4v1234567890" width="600" height="450" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          {/* Left: venue photo */}
+          <div className="relative rounded-2xl overflow-hidden border border-white/20 shadow-2xl min-h-[340px]">
+            <img
+              src="https://res.cloudinary.com/dmqjqn6x3/image/upload/v1778178788/afrogb2_ietljm.jpg"
+              alt="Shaggar Institute of Technology"
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-5">
+              <span className="inline-block bg-amber-500/90 text-black text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-2">
+                Conference Venue
+              </span>
+              <h3 className="text-xl font-bold text-white drop-shadow">Shaggar Institute of Technology</h3>
+              <p className="text-white/80 text-sm">Addis Ababa, Ethiopia</p>
+            </div>
           </div>
-          <div className="p-6">
-            <h3 className="text-xl font-bold text-white mb-2">
-              Shaggar Institute of Technology
-            </h3>
-            <p className="text-white/70 mb-4">
-              Addis Ababa, Ethiopia
-            </p>
-            <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 mb-6">
-              <h4 className="text-amber-400 font-semibold mb-2">Why Addis Ababa?</h4>
-              <p className="text-white/70 text-sm">
-                Addis Ababa is Africa's diplomatic and policy capital, hosting the African Union, the United Nations Economic Commission for Africa, and numerous continental and international institutions. By convening ILSA 2026 here, the summit situates healthy aging discussions at the intersection of science, policy, and continental decision-making.
+
+          {/* Right: info */}
+          <div className="flex flex-col gap-5">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl">📍</span>
+                <h4 className="text-white font-bold text-lg">Location</h4>
+              </div>
+              <p className="text-white/70 text-sm leading-relaxed">
+                Shaggar Institute of Technology, Addis Ababa — Africa's diplomatic and policy capital, home to the African Union and the UN Economic Commission for Africa.
               </p>
             </div>
-            <p className="text-white/60 text-sm mb-6">
-              Detailed information on accommodation, transport, and travel guidance will be provided to registered participants.
-            </p>
+
+            <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-6 backdrop-blur-sm flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl">🌍</span>
+                <h4 className="text-amber-400 font-bold text-lg">Why Addis Ababa?</h4>
+              </div>
+              <p className="text-white/70 text-sm leading-relaxed">
+                By convening ILSA 2026 here, the summit situates healthy aging discussions at the intersection of science, policy, and continental decision-making — where global commitments meet African ambition.
+              </p>
+            </div>
+
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl">🏨</span>
+                <h4 className="text-white font-bold text-lg">Accommodation & Travel</h4>
+              </div>
+              <p className="text-white/60 text-sm leading-relaxed">
+                Detailed information on accommodation, transport, and travel guidance will be provided to registered participants.
+              </p>
+            </div>
           </div>
         </div>
+
+        {/* WhatsApp + Visa row */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+
+          {/* WhatsApp group */}
+          <div className="bg-[#075E54]/20 border border-[#25D366]/30 rounded-2xl p-6 backdrop-blur-sm flex flex-col items-center text-center gap-4">
+            <div className="w-14 h-14 rounded-full bg-[#25D366]/20 flex items-center justify-center">
+              <svg className="w-7 h-7 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 className="text-white font-bold text-base mb-1">Join the Delegates Group</h4>
+              <p className="text-white/60 text-xs mb-4">Stay updated with all conference announcements and connect with fellow delegates.</p>
+              <a
+                href="https://chat.whatsapp.com/H9mMnbWvjhM8IcEXSVbm6z?mode=gi_t"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bc5a] text-black text-sm font-bold px-5 py-2.5 rounded-full transition-colors"
+              >
+                Join WhatsApp Group
+              </a>
+            </div>
+          </div>
+
+          {/* Visa info */}
+          <div className="lg:col-span-2 bg-blue-900/20 border border-blue-500/20 rounded-2xl p-6 backdrop-blur-sm">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-2xl">🛂</span>
+              <h4 className="text-white font-bold text-lg">Visa Guidelines — Addis Ababa, Ethiopia</h4>
+            </div>
+
+            {/* Two option cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-emerald-400 text-base">✅</span>
+                  <p className="text-emerald-400 text-xs font-bold uppercase tracking-wider">Recommended: Visa on Arrival</p>
+                </div>
+                <p className="text-white/70 text-xs leading-relaxed">
+                  Tourist Visa on Arrival is available for eligible countries — check the full list at{' '}
+                  <a href="https://www.evisa.gov.et" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">evisa.gov.et</a>.
+                  Pay upon arrival in <span className="text-white font-medium">USD, EUR, GBP or CAD</span> (card also accepted).
+                  This is the easiest option — we strongly recommend it over a conference visa.
+                </p>
+              </div>
+              <div className="bg-white/5 rounded-xl p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-blue-400 text-base">🌐</span>
+                  <p className="text-blue-300 text-xs font-bold uppercase tracking-wider">Alternative: e-Visa (Before Departure)</p>
+                </div>
+                <p className="text-white/70 text-xs leading-relaxed">
+                  Apply online at{' '}
+                  <a href="https://www.evisa.gov.et" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">evisa.gov.et</a>{' '}
+                  before you travel. Apply at least <span className="text-white font-medium">7–10 days</span> in advance.{' '}
+                  <span className="text-amber-300 font-medium">Print your approved visa</span> — a payment receipt alone is NOT accepted at the border.
+                  If not secured beforehand, you will be required to repay the visa fee on arrival.
+                </p>
+              </div>
+            </div>
+
+            {/* Important notes */}
+            <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 mb-4">
+              <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">⚠️ Important Notes</p>
+              <ul className="text-white/70 text-xs leading-relaxed space-y-1">
+                <li>• Passengers entering for <span className="text-white font-medium">non-tourism purposes</span> (meetings, NGO activities, media, investment) must apply to the Immigration and Citizenship Service in advance.</li>
+                <li>• Passport must be valid for at least <span className="text-white font-medium">6 months</span> from the arrival date.</li>
+                <li>• Fake, damaged, premature, or electronically modified visas outside their validity period will not be accepted.</li>
+              </ul>
+            </div>
+
+            {/* Documents + contacts */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div className="bg-white/5 rounded-xl p-4">
+                <p className="text-white/50 text-xs font-semibold uppercase tracking-wider mb-2">Documents Required</p>
+                <ul className="text-white/70 text-xs leading-relaxed space-y-1">
+                  <li>• Valid passport (6+ months validity)</li>
+                  <li>• Passport photo</li>
+                  <li>• Official invitation letter from SIT <span className="text-white/40">(provided on confirmation)</span></li>
+                  <li>• Proof of funds</li>
+                </ul>
+              </div>
+              <div className="bg-white/5 rounded-xl p-4">
+                <p className="text-white/50 text-xs font-semibold uppercase tracking-wider mb-2">Further Information</p>
+                <ul className="text-white/70 text-xs leading-relaxed space-y-2">
+                  <li>🌐 <a href="https://www.evisa.gov.et/faq" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">evisa.gov.et/faq</a></li>
+                  <li>📧 <a href="mailto:support@evisa.gov.et" className="text-blue-400 hover:underline">support@evisa.gov.et</a></li>
+                  <li>☎️ +251 111 262 635</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl px-4 py-3 text-xs text-white/70">
+              ✉️ For invitation letters and visa support documents:{' '}
+              <a href="mailto:afrolongevity@taffds.org" className="text-amber-400 hover:underline font-medium">afrolongevity@taffds.org</a>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
     {/* Who Should Attend Section */}

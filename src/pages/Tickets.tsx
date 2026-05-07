@@ -31,8 +31,9 @@ const TicketTier: React.FC<TicketTierProps> = ({
         Available until {availableUntil}
       </p>}
       <div className="mb-6">
+        <span className="text-3xl font-bold text-white">$</span>
         <span className="text-3xl font-bold text-white">{price}</span>
-        <span className="text-white/60 ml-1">ZAR</span>
+        <span className="text-white/60 ml-1">USD</span>
         <span className="text-white/60 text-xs block mt-1">Excl VAT</span>
       </div>
       <ul className="space-y-3 mb-8">
@@ -79,39 +80,37 @@ export const Tickets: React.FC = () => {
         </p>
       </div>
       {/* Ticket tiers */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-4">
         <TicketTier 
           name="Standard Delegate" 
-          price="3,500" 
-          features={['Full summit access (2 days)', 'Conference Meals', 'Conference Bag', ' Discounted Airport Transfer ' ]} 
-          onPurchase={() => handlePurchase('Standard Delegate', '3500')} 
+          price="190" 
+          features={['Full summit access (2 days)', 'Conference Meals', 'Conference Bag', 'Discounted Airport Transfer']} 
+          onPurchase={() => handlePurchase('Standard Delegate', '190')} 
         />
         <TicketTier 
           name="Student Delegate" 
-          price="1,000" 
-          features={['Full summit access (2 days)', 'Conference Meals ( verifiable student number required)', 'Current institute of learnings will be verified', ]} 
-          onPurchase={() => handlePurchase('Student Delegate', '1000')} 
+          price="55" 
+          features={['Full summit access (2 days)', 'Conference Meals (verifiable student number required)', 'Current institute of learning will be verified']} 
+          onPurchase={() => handlePurchase('Student Delegate', '55')} 
         />
         <TicketTier 
-          name="MasterClass Only (No Conference Access)" 
-          price="2,000" 
-          features={['Access to Innovation Showcases', 'MasterClass materials and resources']} 
-          onPurchase={() => handlePurchase('MasterClass Only', '2000')} 
-        />
-        <TicketTier 
-          name="Full Conference + MasterClass Combo" 
-          price="5,500 (R500 Discount)" 
+          name="Full Conference" 
+          price="300" 
           highlight={true}
-          features={['Full summit access (2 days)', 'Conference Meals', 'Conference Bag',]} 
-          onPurchase={() => handlePurchase('Full Conference + MasterClass Combo', '5500')} 
+          features={['Full summit access (2 days)', 'Conference Meals', 'Conference Bag', 'Discounted Airport Transfer ', 'MasterClass access included (~$27 saving)']} 
+          onPurchase={() => handlePurchase('Full Conference + MasterClass Combo', '300')} 
         />
         <TicketTier 
-          name="VIP Delegate ( Premium Access)" 
-          price="13,000" 
-          features={['Full summit access (2 days)', ' 2 Nights at Sibaya Lodge', 'VIP transfer from Airport', 'Premium seating at the event', 'VIP networking opportunities', 'Exclusive access to VIP lounge', 'Priority access to all sessions',]} 
-          onPurchase={() => handlePurchase('VIP Delegate', '13000')} 
+          name="VIP Delegate (Premium Access)" 
+          price="700" 
+          features={['Full summit access (2 days)', '2 Nights at Sibaya Lodge', 'VIP transfer from Airport', 'Premium seating at the event', 'VIP networking opportunities', 'Exclusive access to VIP lounge', 'Priority access to all sessions']} 
+          onPurchase={() => handlePurchase('VIP Delegate', '700')} 
         />
       </div>
+      {/* Currency disclaimer */}
+      <p className="text-center text-white/40 text-xs mb-12">
+        * All prices are listed in USD for reference. The final amount charged may vary slightly depending on the currency and payment method used at checkout. Exchange rates are subject to change.
+      </p>
       {/* Payment Modal */}
       <PaymentModal isOpen={selectedTicket !== null} onClose={() => setSelectedTicket(null)} ticketType={selectedTicket?.type || ''} price={selectedTicket?.price || ''} />
       {/* Visa application section */}
